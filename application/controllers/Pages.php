@@ -186,9 +186,9 @@ $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
        }
        public function job_Detail($id)
        {
-               $idd=['pro.prj_id'=>$id];    
-            $result['jobsDetail']=$this->Job_m->getJobDetail($idd);
-            $result['jobFiles']   =$this->Job_m->getJobDetailFiles($id);
+          $idd=['pro.prj_id'=>$id];    
+          $result['jobsDetail']=$this->Job_m->getJobDetail($idd);
+          $result['jobFiles']   =$this->Job_m->getJobDetailFiles($id);
             
             // echo "<pre>";
             // print_r($result);
@@ -450,6 +450,122 @@ $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
        $re=$this->cms_m->addSub($arrayName);
        echo $re;
+    }
+
+    // online apply for tests
+    public function insertUpdateApplicants()
+    {
+          // echo "<pre>";
+          // print_r($_POST);
+          // die();
+ 
+          $prj_id        = $this->input->post('prj_id');
+          $app_rev_date  = date('Y-m-d');
+          $test_date     = $this->input->post('test_date');
+          $test_time     = date('H:i:s');
+
+          $role_id      = 3;
+          $user_id      = $this->input->post('user_id');
+          $userName     = $this->input->post('user_name');
+          $userFname    = $this->input->post('user_f_name');
+          $userCnic     = $this->input->post('user_cnic');
+          $userEmail    = $this->input->post('user_email');
+          $userContact  = $this->input->post('user_contact');
+          $userAddr     = $this->input->post('address');
+
+          if(!empty($userCnic))
+          {
+            // $this->API_m->delete('applicants',['prj_id'=>$prj_id]);
+            // for($i=0; $i<sizeof($userCnic); $i++)
+            // {
+              $userid = '';
+                $usr_id ='';
+              if(!empty($userCnic))
+              {
+                $userData =
+                      array(
+                          'user_fullname'     => $userName,
+                          'user_father_name'  => $userFname,
+                          'user_email'        => $userEmail,
+                          'user_cnic'         => $userCnic,
+                          'user_contact'      => $userContact,
+                          'user_address'      => $userAddr,
+                          'role_id'           => $role_id,
+                          'user_created_date' => date('Y-m-d'),
+                          'user_created_by'   => 1
+                          
+                        );
+
+                  $res = $this->API_m->singleRecord('users',['user_id'=>$user_id]);
+                    if(!empty($res))
+                    {
+                        $this->API_m->updateRecord('users',['user_id'=>$user_id],$userData);
+                        $userid = $user_id;
+                        $uAdd = array(
+                          'address1'  => $userAddr,
+                          'user_id'   => $userid
+                          
+                        );
+
+                        $this->API_m->updateRecord('user_addresses',['user_id'=>$user_id],$uAdd);
+                    }
+                    else
+                    {
+                        $userid =  $this->API_m->create('users',$userData);
+                          $usr_id = $userid;
+                        $uAdd = array(
+                          'address1'      => $userAddr,
+                          'user_id'       => $userid
+                          
+                        );
+                        $this->API_m->create('user_addresses',$uAdd);
+
+                    }
+
+                    // ***** Application Table data
+
+                    $appData = [
+                          'user_id'           => $userid,
+                          'prj_id'            => $prj_id,
+                          'app_received_date' => date('Y-m-d',strtotime($app_rev_date)),
+                          'test_date_time'    => date('Y-m-d',strtotime($test_date)).' '.date('H:i:s',strtotime($test_time)),
+                          'app_created_date'  => date('Y-m-d'),
+                          'app_created_by'    => 1
+                    ]; 
+
+                      $apRes = $this->API_m->singleRecord('applicants',['prj_id'=>$prj_id,'user_id'=>$userid]);
+                    if(!empty($apRes))
+                    {
+                      $this->API_m->updateRecord('applicants',['app_id'=>$apRes->app_id],$appData);
+                    }
+                    else
+                    {
+                      $this->API_m->create('applicants',$appData);
+                          // email configuration  
+                            // $u_res   = $this->API_m->singleRecord('users',['user_id'=>$usr_id]);
+                            // $to      = $u_res->user_email;
+                            // $subject = "Job Portal";
+                            // $body    = "Dear Applicant!<br> Your Application for the applied job in job portal has been Received.<br>Your Date/Time : ".date('Y-m-d',strtotime($test_date));
+                            // $this->UserEmail_m->sendDataToEmail($to,$subject,$body);
+                          // end email configuration 
+
+                    }
+
+                    }
+              }
+              // }
+                  // Notification area
+              // $activity = [
+              // 'notify_operation'   => 'insert_Update_Applicants', //crud name
+              // 'notify_activity_on' => 11, // id etc
+              // 'activity_name'      => 'insertUpdateApplicants',  // method name
+              // 'notify_created_for' => $this->session->userdata('user')['user_id'],
+              // 'modify_date'        => date('Y-m-d H:i:s')
+              // ];
+              // $this->API_m->create('notifications', $activity);
+              // Notification area end
+              $this->session->set_flashdata('success','You have been Applied successfully');
+              redirect('Job/index');
     }
 }
 

@@ -7,6 +7,11 @@
 		<!-- Our Job -->
 		<div class="section-full bg-white content-inner-2">
 			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<?php $this->load->view('backend/layouts/flashMsg/flashMsg'); ?>
+					</div>
+				</div>
 				<div class="d-flex job-title-bx section-head">
 					<div class="mr-auto">
 						<h2 class="m-b5">Recent Jobs</h2>

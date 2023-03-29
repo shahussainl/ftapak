@@ -92,19 +92,19 @@
                   
                       
                       
-                        <form action="<?php echo base_url('MainContent/insertUpdateApplicants'); ?>" method="post">
-                            <input type="hidden" name="prj_id" value="<?= $this->uri->segment(3); ?> ">
-                              <div class="row">
-                                <div class="col-md-4">
-                               <b>Test Date/Time:</b> <label>
+<form action="<?php echo base_url('MainContent/insertUpdateApplicants'); ?>" method="post">
+<input type="hidden" name="prj_id" value="<?= $this->uri->segment(3); ?> ">
+<div class="row">
+<div class="col-md-4">
+<b>Test Date/Time:</b> <label>
  <div class="row">
     <div class="col-md-6">
       <div class="input-group date">
         <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
         </div>
-        <input type="text" class="form-control pull-right  tstDate" value="<?php if(!empty($res->prj_end_date)){ echo date('m/d/Y',strtotime($res->prj_end_date)); } ?>" name="test_date" onclick="edDate()" required>
-        <input type="hidden" value="<?php if(!empty($res->prj_end_date)){ echo date('m/d/Y',strtotime($res->prj_end_date)); } ?>" class="eDate">
+         <input type="text" class="form-control pull-right  tstDate" value="<?php if(!empty($res->prj_end_date)){ echo date('m/d/Y',strtotime($res->prj_end_date)); } ?>" name="test_date" onclick="edDate()" required>
+         <input type="hidden" value="<?php if(!empty($res->prj_end_date)){ echo date('m/d/Y',strtotime($res->prj_end_date)); } ?>" class="eDate">
          <input type="hidden" value="<?php if(!empty($res->prj_start_date)){ echo date('m/d/Y',strtotime($res->prj_start_date)); } ?>" class="sDate">
       </div>
     </div>
