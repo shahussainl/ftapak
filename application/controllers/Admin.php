@@ -34,6 +34,7 @@ class Admin extends CI_Controller
         $condition = [
             'user_email'     => $email,
             'role_id'        => 1,
+            'user_is_trash'  => 0
         ];
       
         $returnedData = $this->API_m->singleRecordArray('users', $condition);

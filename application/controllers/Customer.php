@@ -21,6 +21,7 @@
             $condition = [
                 'user_email'     => $email,
                 'role_id'        => 3,
+                'user_is_trash'  => 0
             ];
             $returnedData = $this->API_m->singleRecordArray('users', $condition);
             $size = sizeof($returnedData);
