@@ -126,6 +126,8 @@
                 <li><a href="#experience" data-toggle="tab">Experience</a></li>
                 <!-- <li><a href="#courses" data-toggle="tab">Courses/Skill</a></li> -->
                 <li ><a href="#activity" data-toggle="tab">Positions Applied</a></li>
+                <li ><a href="#activejobs" data-toggle="tab">Active Jobs</a></li>
+            
             </ul>
             <div class="tab-content">
                 <!-- position applied -->
@@ -413,6 +415,64 @@
               <!-- tab-pane courses -->
               <div class="tab-pane" id="courses">
                   <h1>courses</h1>
+              </div>
+              <!-- tab-pane Active Jobs -->
+              <div class="tab-pane" id="activejobs">
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-striped">
+                       <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Post</th>
+                          <th>Dept/Org</th>
+                          <th>Start</th>
+                          <th>Deadline</th>
+                          <th>Action</th>
+                        </tr>
+                       </thead>
+                       <tbody>
+                         <?php if(!empty($activejobs)){
+                           $c = 1;
+                              foreach($activejobs as $job)
+                              {
+                                $today    = date('Y-m-d');
+                                $deadline = $job['prj_start_date'];
+                          ?>
+                           <tr>
+                            <td><?= $c; ?></td>
+                            <td><?= $job['prj_name']; ?></td>
+                            <td><?= $job['org_name']; ?></td>
+                            <td><?= date('d M y',strtotime($job['prj_start_date'])); ?></td>
+                            <td><?= date('d M y',strtotime($job['prj_end_date'])); ?></td>
+                            <?php 
+                              // if()
+                              // {
+                              // }
+                              if($today<$deadline)
+                              {
+                            ?>
+                            <td><a href="#"  class="text-primary"><strong>Apply</strong></a></td>
+                            <?php
+                              }else
+                              {
+                            ?>
+                             <td class="text-danger"><strong>Expired</strong></td>
+                            <?php
+                              }
+                            ?>
+                           
+                          </tr>
+                          <?php
+                           $c++;
+                              }
+                         }
+                         ?>
+                       
+                       </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- /.tab-content -->

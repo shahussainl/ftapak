@@ -285,6 +285,21 @@
         }
         return false;
    }
+   public function active_jobs() {
+      $this->db->limit(10);
+      $query = $this->db->select('*')->from('projects as pro')
+                      ->join('organization as org','org.org_id=pro.org_id')
+                      ->join('org_addresses as add','org.org_id=add.org_id')
+                      ->order_by('pro.prj_id','DESC')
+                      ->get();
+      if ($query->num_rows() > 0) {
+          foreach ($query->result_array() as $row) {
+              $data[] = $row;
+          }
+          return $data;
+      }
+      return false;
+  }
 
 
 

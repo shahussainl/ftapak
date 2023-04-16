@@ -114,8 +114,9 @@
                 $result['udata']      = $this->API_m->singleRecord('users',['user_id'=>$userid]);
                 $result['education']  = $this->API_m->getRecordWhere('applicant_education',['applicant_id'=>$userid]);
                 $result['experience'] = $this->API_m->getRecordWhere('applicant_experience',['applicant_id'=>$userid]);
+                $result['activejobs'] = $this->Job_m->active_jobs();
                 // $result['tPrj']     = $this->API_m->countAllRows('applicants',['user_id'=>$userid]);
-                // echo "<pre>"; print_r($result['udata']);die();
+                // echo "<pre>"; print_r($result['activejobs']);die();
                 $this->load->view('backend/include/head');
                 $this->load->view('backend/include/customerheader');
                 // $this->load->view('backend/include/sideBar');
