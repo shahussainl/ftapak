@@ -86,7 +86,7 @@
                         'user_email'    => $email,
                         'user_contact'  => $user_phone,
                         'user_password' => $passwordhash,
-                        'role'          => 3
+                        'role_id'       => 3
                     ];
                     $this->API_m->create('users', $reg_arr);
                     $this->session->set_flashdata('Msg', 'Registered Successfull!');

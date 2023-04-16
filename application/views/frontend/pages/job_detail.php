@@ -122,7 +122,7 @@
 												<li><i class="ti-location-pin"></i><strong class="font-weight-700 text-black">Address</strong><span class="text-black-light"> <?php echo $jobsDetail['org_address']; ?></span></li>
 												<li><i class="ti-money"></i><strong class="font-weight-700 text-black">Salary</strong> $800 Monthy</li>
 												<li><i class="ti-shield"></i><strong class="font-weight-700 text-black">Experience</strong>6 Year Experience</li>
-												<li><button  class="site-button"  data-toggle="modal" data-target="#onlineApply">Apply Online</button></li>
+												<li><a href="<?= base_url('Customer'); ?>" class="site-button"  >Apply Online</a></li>
 											</ul>
 										</div>
 									</div>
