@@ -516,6 +516,44 @@ $('.Appdata-tbl').DataTable({
 </script>
 
 
+<script type="text/javascript">
+  $(document).on('keyup', '.CustomeroldPassword', function () {
+   var obj = $(this);
+   var oldPassword = obj.val();
+   // alert(oldPassword);
+   var label = $('.CustomeroldPasswordLabel');
+   var btn = $('.CustomerupdatePasswordBTN');
+   $.ajax({
+       type: 'post',
+       dataType: 'json',
+       data: {'CustomeroldPassword': oldPassword},
+       url:'<?= base_url("Customer/verifiedOldPassword");?>',
+       success: function (data)
+       {
+         // alert(data);
+           if (data == 0)
+           {
+               obj.css('border-color', 'red');
+               label.css('color', 'red');
+               label.text('old password is incorrect !');
+               btn.attr('disabled', true);
+           } else
+           {
+               obj.css('border-color', 'green');
+               label.css('color', 'green');
+               label.text('Old Password is correct.');
+               btn.removeAttr('disabled');
+           }
+       },
+       error: function ()
+       {
+           alert('ajax call error');
+       }
+   });
+});
+</script>
+
+
 <!----------------------------start code for multiple delete About---------------------------->
 
 <script>

@@ -497,18 +497,6 @@
          $contact          = $this->input->post('contact');
          $usertele         = $this->input->post('user_telephone');
          $user_idd         = $this->input->post('idd');
-
-            
-     
-         // echo "<pre>";
-         // print_r($name);user_telephone
-         // print_r($email);
-         // print_r($address);
-         // print_r($contact);
-         // print_r($user_idd);
-        
-         // exit();
-
                $id=['user_id'=>$user_idd];
              if(!$img = $_FILES['photo']['name'])
                {          

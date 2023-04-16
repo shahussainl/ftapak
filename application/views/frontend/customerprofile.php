@@ -24,6 +24,9 @@
     <section class="content">
 
       <div class="row">
+        <div class="col-sm-12">
+                <?php $this->load->view('backend/layouts/flashMsg/flashMsg'); ?>
+        </div>
         <div class="col-md-3">
 
           <!-- Profile Image -->
@@ -121,7 +124,7 @@
                 <li class="active"><a href="#personal" data-toggle="tab">Personal</a></li>
                 <li><a href="#education" data-toggle="tab">Education</a></li>
                 <li><a href="#experience" data-toggle="tab">Experience</a></li>
-                <li><a href="#courses" data-toggle="tab">Courses/Skill</a></li>
+                <!-- <li><a href="#courses" data-toggle="tab">Courses/Skill</a></li> -->
                 <li ><a href="#activity" data-toggle="tab">Positions Applied</a></li>
             </ul>
             <div class="tab-content">
@@ -154,49 +157,258 @@
               </div>
               <!-- tab pane personal -->
               <div class="tab-pane active" id="personal">
-                <form class="form-horizontal">
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <label for="inputName" class=" control-label">Name</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="Name">
-                        </div>
-                  </div>
-                  <div class="col-sm-2"></div>
-                  <div class="col-sm-5">
-                        <div class="form-group">
-                            <label for="inputEmail" class=" control-label">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                  </div>
-                  <div class="col-sm-12">
-                        <div class="form-group">
-                          <label for="inputExperience" class="control-label">Address</label>
-                          <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                       </div>
-                  </div>
-                  <!-- <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                        </label>
-                      </div>
-                    </div>
-                  </div> -->
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Save</button>
-                    </div>
-                  </div>
-                </form>
+              <div class="row">
+                 <div class="col-md-6">      
+                   <form method="post" action="<?php echo base_url('Customer/updateUserInfo');?>" enctype="multipart/form-data">
+                         <div class="box-body">
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="exampleInputEmail1">User Name</label>
+                                   <input type="text" name="name" class="form-control" autocomplete="off" required="required" value="<?php echo $udata->user_fullname;?>">
+                                   <input type="hidden" name="idd" value="<?php echo $udata->user_id;?>">
+                                </div>  
+                                 <div class="form-group col-md-6">
+                                  <label for="exampleInputEmail1">Email</label>
+                                   <input type="email" name="email" class="form-control" autocomplete="off" required="required" value="<?php echo $udata->user_email;?>">
+                                </div> 
+                              </div>
+                              <div class="form-row">
+                               
+                                 <div class="form-group col-md-6">
+                                  <label for="exampleInputEmail1">Father Name</label>
+                                   <input type="text" name="user_f_name" class="form-control" autocomplete="off" required="required" value="<?php echo $udata->user_father_name;?>">
+                                </div> 
+                                <div class="form-group col-md-6">
+                                  <label for="exampleInputEmail1">Contact</label>
+                                   <input type="text" name="contact" class="form-control" autocomplete="off" required="required" value="<?php echo $udata->user_contact;?>">
+                                </div> 
+                                <div class="form-group col-md-12">
+                                  <label for="exampleInputEmail1">Address</label>
+                                   <input type="text" name="address" class="form-control" autocomplete="off" required="required" value="<?php echo $udata->user_address;?>">
+                                </div> 
+                              </div>
+                               <div class="form-row">
+                                <div class="form-group col-md-6">     
+                                </div>
+                                
+                                  <?php
+                                    if(empty($userInfo->user_img))
+                                    {
+                                  ?>
+                                         
+                                    <div class="form-group col-md-6">
+                                       <label>User Img</label>
+                                       <input type="file"  name="photo" id="my_image_name"  class="form-control"/>
+                                    </div>
+
+                                  <?php 
+                                    }
+                                    else
+                                    {
+                                   ?>
+                                     
+                                      <div class="form-group col-md-6">
+                                        <img src="<?php echo base_url('uploads/'.$udata->user_img);?>" style="height: 100px; width: 150px;"><br>
+                                        <a href="<?php echo base_url('Customer/deleteUserInfoImg/'.$udata->user_id);?>" class="btn btn-danger btn-sm fo" style="margin-top: 10px;">trash</a>
+                                      </div>
+
+                                   <?php     
+                                    }
+                                  ?>   
+                              </div>
+                          </div>         
+                          <div class="form-group col-md-12">
+                               <div class="box-footer">
+                                 <button type="submit" name="submit" class="btn btn-primary updatePasswordBTN" id="submit">Save</button>
+                               </div>
+                          </div>
+                                 
+                     </form>
+
+
+                  </div> 
+                    <div class="col-md-6">      
+                      <form method="post" action="<?php echo base_url('Customer/updateUserPassword');?>" enctype="multipart/form-data">
+                         <div class="box-body">
+
+                              <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="exampleInputEmail1"  class="CustomeroldPasswordLabel">Old Password</label>
+                                   <input type="password" name="oldPassword" class="form-control CustomeroldPassword" autocomplete="off" required="required">
+                                </div>  
+                                 <div class="form-group col-md-6">
+                                  <label for="exampleInputEmail1">New password</label>
+                                   <input type="password" name="newPassword" class="form-control CustomernewPassword" autocomplete="off" required="required">
+                                </div> 
+                              </div>
+                          </div>         
+                          <div class="form-group col-md-12">
+                               <div class="box-footer">
+                                 <button type="submit" name="submit" class="btn btn-primary CustomerupdatePasswordBTN" id="submit">Change Password</button>
+                               </div>
+                          </div>
+                                 
+                     </form>           
+                  </div>   
+              </div>
+              <!-- /.row -->
               </div>
               <!-- tab-pane education -->
               <div class="tab-pane" id="education">
-                  <h1>education</h1>
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-striped">
+                       <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Qualification</th>
+                          <th>Subject</th>
+                          <th>Obtained</th>
+                          <th>Total</th>
+                          <th>%</th>
+                        </tr>
+                       </thead>
+                       <tbody>
+                         <?php if(!empty($education)){
+                           $c = 1;
+                              foreach($education as $edu)
+                              {
+                          ?>
+                           <tr>
+                            <td><?= $c; ?></td>
+                            <td><?= $edu->qualification; ?></td>
+                            <td><?= $edu->subject; ?></td>
+                            <td><?= $edu->obtained; ?></td>
+                            <td><?= $edu->total; ?></td>
+                            <td><?= $edu->percentage; ?></td>
+                          </tr>
+                          <?php
+                           $c++;
+                              }
+                         }
+                         ?>
+                       
+                       </tbody>
+                    </table>
+                  </div>
+                </div>
+                <form method="post" action="<?php echo base_url('Customer/updateEducation');?>" enctype="multipart/form-data">
+                    <div class="box-body">
+                        <div class="form-row">
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Qualification</label>
+                            <select name="qualification" class="form-control ">
+                              <option value="">-select-</option>
+                              <option value="Matric/SSC/Equivalent">Matric/SSC/Equivalent </option>
+                              <option value="fsc/HSSC/Equivalent">Fsc/HSSC/Equivalent </option>
+                              <option value="Bsc/Equivalent">Bsc/Equivalent(14 years) </option>
+                              <option value="Bachlor/Msc/Equivalent">Bachlor/Msc/Equivalent (16 Years) </option>
+                              <option value="Bachlor/Mphl/Equivalent">Master/Mphl/Equivalent (18 Years) </option>
+                            </select>
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Subject</label>
+                              <input type="text" name="subject" class="form-control " autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Institute/Board</label>
+                              <input type="text" name="institute" class="form-control " placeholder="institute" autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Obtained</label>
+                              <input type="text" name="obtained" class="form-control " placeholder=" Marks/CGPA" autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Total </label>
+                              <input type="text" name="total" class="form-control " placeholder="Marks/CGPA" autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Percentage</label>
+                              <input type="text" name="percentage" class="form-control " placeholder="percentage"  autocomplete="off" required="required">
+                          </div>  
+                        </div>
+                    </div>         
+                    <div class="form-group col-md-12">
+                          <div class="box-footer">
+                            <button type="submit" name="submit" class="btn btn-primary CustomerupdatePasswordBTN" id="submit">Add</button>
+                          </div>
+                    </div>
+                            
+                </form>    
               </div>
                <!-- tab-pane experience -->
                <div class="tab-pane" id="experience">
-                  <h1>experience</h1>
+               <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-striped">
+                       <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Organization</th>
+                          <th>Designation</th>
+                          <th>Tenure</th>
+                          <th>Duration</th>
+                          <th>Remarks</th>
+                        </tr>
+                       </thead>
+                       <tbody>
+                         <?php if(!empty($experience)){
+                           $c = 1;
+                              foreach($experience as $exp)
+                              {
+                          ?>
+                           <tr>
+                            <td><?= $c; ?></td>
+                            <td><?= $exp->org; ?></td>
+                            <td><?= $exp->designation; ?></td>
+                            <td><?= date('d/y',strtotime($exp->start)).' to '.date('d/y',strtotime($exp->end)); ?></td>
+                            <td><?= $exp->duration; ?></td>
+                            <td><?= $exp->remarks; ?></td>
+                          </tr>
+                          <?php
+                           $c++;
+                              }
+                         }
+                         ?>
+                       </tbody>
+                    </table>
+                  </div>
+                </div>
+                <form method="post" action="<?php echo base_url('Customer/updateExperience');?>" enctype="multipart/form-data">
+                    <div class="box-body">
+                        <div class="form-row">
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Organization</label>
+                              <input type="text" name="organization" class="form-control " autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Designation</label>
+                              <input type="text" name="designation" class="form-control " placeholder="Designation" autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Start</label>
+                              <input type="date" name="obtained" class="form-control "  autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">End</label>
+                              <input type="date" name="obtained" class="form-control "  autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Duration </label>
+                              <input type="text" name="duration" class="form-control " placeholder="Duration" autocomplete="off" required="required">
+                          </div>  
+                          <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Remarks</label>
+                              <input type="text" name="remarks" class="form-control " placeholder="Remarks"  autocomplete="off" required="required">
+                          </div>  
+                        </div>
+                    </div>         
+                    <div class="form-group col-md-12">
+                          <div class="box-footer">
+                            <button type="submit" name="submit" class="btn btn-primary CustomerupdatePasswordBTN" id="submit">Add</button>
+                          </div>
+                    </div>
+                </form>   
               </div>
               <!-- tab-pane courses -->
               <div class="tab-pane" id="courses">

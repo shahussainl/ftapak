@@ -130,7 +130,8 @@ if ( ! function_exists('password_hash'))
 			}
 			elseif (defined('MCRYPT_DEV_URANDOM'))
 			{
-				$options['salt'] = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+				// $options['salt'] = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
+				$options['salt'] = random_bytes(16);
 			}
 			elseif (DIRECTORY_SEPARATOR === '/' && (is_readable($dev = '/dev/arandom') OR is_readable($dev = '/dev/urandom')))
 			{
