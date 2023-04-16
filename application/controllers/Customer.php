@@ -10,6 +10,10 @@
        {
          $this->load->view('frontend/customerlogin');
        }
+       public function register()
+       {
+         $this->load->view('frontend/register');
+       }
        public function CustomerVerify() 
        {
             $email        = $this->input->post('user_email');
@@ -59,6 +63,45 @@
                 redirect('Customer');
             } 
         }
+        public function CustomerRegister() 
+       {
+            $email         = $this->input->post('user_email');
+            $fullname      = $this->input->post('user_fullname');
+            $user_cnic     = $this->input->post('user_cnic');
+            $user_phone    = $this->input->post('user_phone');
+            $password      = $this->input->post('user_password');
+            $passwordhash  = $this->password->hash($password);
+            $condition = [
+                'user_email'     => $email,
+                'user_cnic'      => $user_cnic,
+            ];
+            $returnedData = $this->cms_m->findCnicEmail($condition);
+            // echo "<pre>"; print_r($returnedData); die();
+            $size = sizeof($returnedData);
+                if(empty($size)) 
+                {
+                    $reg_arr = [
+                        'user_cnic'     => $user_cnic,
+                        'user_fullname' => $fullname,
+                        'user_email'    => $email,
+                        'user_contact'  => $user_phone,
+                        'user_password' => $passwordhash,
+                        'role'          => 3
+                    ];
+                    $this->API_m->create('users', $reg_arr);
+                    $this->session->set_flashdata('Msg', 'Registered Successfull!');
+                        redirect('Customer/index');
+                } else {
+                    $this->session->set_flashdata('Msg', 'Already Registered, Try to Sign in');
+                    redirect('Customer/register');
+                }
+            // } 
+            // else 
+            // {
+            //     $this->session->set_flashdata('Msg', 'Wrong Credentials');
+            //     redirect('Customer/register');
+            // } 
+        }
 
         public function portal()
         {
@@ -69,6 +112,7 @@
                 $result['prjHis']     = $this->Project_m->ApplicantPrjHistory($userid);
                 $result['udata']      = $this->API_m->singleRecord('users',['user_id'=>$userid]);
                 $result['education']  = $this->API_m->getRecordWhere('applicant_education',['applicant_id'=>$userid]);
+                $result['experience'] = $this->API_m->getRecordWhere('applicant_experience',['applicant_id'=>$userid]);
                 // $result['tPrj']     = $this->API_m->countAllRows('applicants',['user_id'=>$userid]);
                 // echo "<pre>"; print_r($result['udata']);die();
                 $this->load->view('backend/include/head');
@@ -268,7 +312,7 @@
             }
             public function updateExperience()
             {
-                $org = $this->input->post('org');    
+                $org           = $this->input->post('org');    
                 $designation   = $this->input->post('designation');  
                 $duration      = $this->input->post('duration');    
                 $remarks       = $this->input->post('remarks'); 
@@ -285,6 +329,7 @@
                         'end'           => date('Y-m-d', strtotime($end)),                                 
                         'applicant_id'  => $user_id,                                 
                     );
+                    // echo"<pre>"; print_r($exp_arr); die();
                 $re = $this->API_m->create($tableUser,$exp_arr);
                 if(!$re)
                 {

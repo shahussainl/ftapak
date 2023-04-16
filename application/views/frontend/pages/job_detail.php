@@ -249,5 +249,5 @@
          $('#errMsg').html('<span class="text-danger">CNIC must not be empty!</span>');
          $(obj).closest('tr').find('.cnicMsg').css("border", "red solid 1px");
      }
-  }
+  }onblur="findCnicRec(this);"
 </script>

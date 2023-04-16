@@ -406,7 +406,7 @@ Applicant List2
   </div>
   <style type="text/css">
     .modal-dialog{vertical-align: center !important;margin-top: 150px;opacity: 0px;}
-    .#modal-success{background-color: rgba(0,0,0,.0001) !important;}
+    #modal-success{background-color: rgba(0,0,0,.0001) !important;}
   </style>
   <!-- /.content-wrapper -->
 <!-- loader  -->

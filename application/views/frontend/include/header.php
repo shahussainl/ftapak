@@ -23,12 +23,12 @@
 						<span></span>
 					</button>
                     <!-- extra nav -->
-                <!--     <div class="extra-nav">
+                    <div class="extra-nav">
                         <div class="extra-cell">
-                            <a href="register-2.html" class="site-button"><i class="fa fa-user"></i> Sign Up</a>
-							<a href="#" title="READ MORE" rel="bookmark" data-toggle="modal" data-target="#car-details" class="site-button"><i class="fa fa-lock"></i> login </a>
+                            <!-- <a href="register-2.html" class="site-button"><i class="fa fa-user"></i> Sign Up</a> -->
+							<a href="<?= base_url('Customer');?>" title="SIGN IN" rel="SIGN IN"  class="site-button"><i class="fa fa-lock"></i> login </a>
                         </div>
-                    </div> -->
+                    </div>
                     <!-- main nav -->
                     <div class="header-nav navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
                         <ul class="nav navbar-nav">
@@ -45,13 +45,13 @@
 								<a href="javascript:void(0);" >Jobs <i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">
 							    	
-									<li><a href="<?php // echo base_url('Pages/all_jobs');?>" class="dez-page">all jobs <span class="new-page">New</span></a></li>
-									<li><a href="<?php // echo base_url('Pages/company_jobs');?>" class="dez-page">company jobs <span class="new-page">New</span></a></li>
-									<li><a href="<?php // echo base_url('Pages/designation_jobs');?>" class="dez-page">designations jobs <span class="new-page">New</span></a></li>
-									<li><a href="<?php // echo base_url('Pages/category_jobs');?>" class="dez-page">category jobs <span class="new-page">New</span></a></li>
-									<li><a href="<?php // echo base_url('Pages/location_jobs');?>" class="dez-page">location jobs <span class="new-page">New</span></a></li>
-									<li><a href="<?php // echo base_url('Pages/skill_jobs');?>" class="dez-page">skill jobs <span class="new-page">New</span></a></li>
-									<li><a href="<?php // echo base_url('Pages/all_jobs');?>" class="dez-page">browse filter list <span class="new-page">New</span></a></li>	
+									<li><a href="<php // echo base_url('Pages/all_jobs');?>" class="dez-page">all jobs <span class="new-page">New</span></a></li>
+									<li><a href="<php // echo base_url('Pages/company_jobs');?>" class="dez-page">company jobs <span class="new-page">New</span></a></li>
+									<li><a href="<php // echo base_url('Pages/designation_jobs');?>" class="dez-page">designations jobs <span class="new-page">New</span></a></li>
+									<li><a href="<php // echo base_url('Pages/category_jobs');?>" class="dez-page">category jobs <span class="new-page">New</span></a></li>
+									<li><a href="<php // echo base_url('Pages/location_jobs');?>" class="dez-page">location jobs <span class="new-page">New</span></a></li>
+									<li><a href="<php // echo base_url('Pages/skill_jobs');?>" class="dez-page">skill jobs <span class="new-page">New</span></a></li>
+									<li><a href="<php // echo base_url('Pages/all_jobs');?>" class="dez-page">browse filter list <span class="new-page">New</span></a></li>	
 								</ul>
 							</li> -->
 						    <li class="<?php if($ci=='Job' && $mtd=='test_result'){ echo 'active'; } ?>">

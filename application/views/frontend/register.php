@@ -38,7 +38,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p><br>
+    <p class="login-box-msg"><strong>Register</strong> </p>
     <p class="login-box-msg text-danger">
       <?php 
          if(!empty($this->session->flashdata('Msg')))
@@ -47,11 +47,22 @@
            } 
       ?>
       </p>
-
-    <form action="<?= base_url('Customer/CustomerVerify/'); ?>" method="post">
+    <form action="<?= base_url('Customer/CustomerRegister/'); ?>" method="post">
+        <div class="form-group has-feedback">
+            <input type="text" id="uCnic" class="form-control cnicMsg uCnic" name="user_cnic" onblur="findCnicRec(this);" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask=""  placeholder="xxxxx-xxxxxx-x" autocomplete="off">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control " name="user_fullname"   placeholder="Full name" autocomplete="off">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" name="user_email" placeholder="Email" autocomplete="off">
+        <input type="email" class="form-control" name="user_email" onblur="findEmailRec(this);" placeholder="Email" autocomplete="off">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="text" name="user_phone" class="form-control user_contact" value="" placeholder="03xx-xxxxxxx" data-inputmask="&quot;mask&quot;: &quot;9999-9999999&quot;" data-mask="" required="">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password" class="form-control" name="user_password" placeholder="Password" autocomplete="off">
@@ -67,7 +78,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign up</button>
         </div>
         <!-- /.col -->
       </div>
@@ -79,7 +90,7 @@
       </div>
       <!-- /.col -->
       <div class="col-xs-12">
-        <a href="<?= base_url('Customer/register'); ?>" class="btn btn-warning btn-block btn-flat">Sign up</a>
+        <a href="<?= base_url('Customer'); ?>" class="btn btn-warning btn-block btn-flat">Sign in</a>
       </div>
       <!-- /.col -->
     </div>
@@ -99,5 +110,57 @@
 <!-- iCheck -->
 <script src="<?php echo base_url('back_asset/plugins/iCheck/icheck.min.js'); ?>"></script>
 
+<script src="<?php echo base_url('back_asset/plugins/input-mask/jquery.inputmask.js'); ?>"></script>
+<script src="<?php echo base_url('back_asset/plugins/input-mask/jquery.inputmask.date.extensions.js'); ?>"></script>
+<script src="<?php echo base_url('back_asset/plugins/input-mask/jquery.inputmask.extensions.js'); ?>"></script>
+<script>
+  function findCnicRec(obj)
+  {
+    var cnic = $(obj).val();
+
+    // alert(cnic);
+   if(cnic!='')
+   {
+    // $.ajax({
+	// 	type: 'post',
+	// 	dataType: 'json',
+	// 	async: false,
+	// 	data: {
+	// 		"user_cnic": cnic
+	// 	},
+	// 	url: '<= base_url('MainContent/getUserDetail'); ?>',
+	// 	success: function (data)
+	// 	{
+	// 		// alert(data);
+
+	// 		if (data == null) {
+	// 		} else {
+
+	// 			$('#errMsg').html('<span class="text-success">Record Found!</span>');
+	// 			$(obj).closest('tr').find('.cnicMsg').css("border", "green solid 1px");
+	// 			$(obj).closest('tr').find('.user_email').val(data.user_email);
+				
+	// 		}
+		
+	// 	}
+	// });
+     } 
+     else
+     {
+         $('#errMsg').html('<span class="text-danger">CNIC must not be empty!</span>');
+         $(obj).closest('tr').find('.cnicMsg').css("border", "red solid 1px");
+     }
+  }
+
+  $(document).ready(function(){
+    $('[data-mask]').inputmask();
+    // $(document).on('click','.btn_edit',function(){
+    //     var id = $(this).attr('id');
+    //     $('input[name="id"]').val(id);
+
+    // });
+});
+</script>
+</script>
 </body>
 </html>

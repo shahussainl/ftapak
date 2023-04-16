@@ -361,7 +361,7 @@
                             <td><?= $c; ?></td>
                             <td><?= $exp->org; ?></td>
                             <td><?= $exp->designation; ?></td>
-                            <td><?= date('d/y',strtotime($exp->start)).' to '.date('d/y',strtotime($exp->end)); ?></td>
+                            <td><?= date('d/m/y',strtotime($exp->start)).' to '.date('d/m/y',strtotime($exp->end)); ?></td>
                             <td><?= $exp->duration; ?></td>
                             <td><?= $exp->remarks; ?></td>
                           </tr>
@@ -379,7 +379,7 @@
                         <div class="form-row">
                           <div class="form-group col-md-2">
                             <label for="exampleInputEmail1">Organization</label>
-                              <input type="text" name="organization" class="form-control " autocomplete="off" required="required">
+                              <input type="text" name="org" class="form-control " placeholder="Organization"  autocomplete="off" required="required">
                           </div>  
                           <div class="form-group col-md-2">
                             <label for="exampleInputEmail1">Designation</label>
@@ -387,11 +387,11 @@
                           </div>  
                           <div class="form-group col-md-2">
                             <label for="exampleInputEmail1">Start</label>
-                              <input type="date" name="obtained" class="form-control "  autocomplete="off" required="required">
+                              <input type="date" name="start" class="form-control "  autocomplete="off" required="required">
                           </div>  
                           <div class="form-group col-md-2">
                             <label for="exampleInputEmail1">End</label>
-                              <input type="date" name="obtained" class="form-control "  autocomplete="off" required="required">
+                              <input type="date" name="end" class="form-control "  autocomplete="off" required="required">
                           </div>  
                           <div class="form-group col-md-2">
                             <label for="exampleInputEmail1">Duration </label>

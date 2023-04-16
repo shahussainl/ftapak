@@ -54,10 +54,8 @@ class Cms_m extends CI_Model
     }
     public function getContact($tabName,$ord_id,$id)
     {
-   	   
        $this->db->where($id);
        $this->db->order_by($ord_id,"desc");
-      
    	   $q = $this->db->get($tabName);
    	   return $q->result_array();
     }
@@ -128,6 +126,15 @@ class Cms_m extends CI_Model
        
           $query = $this->db->get();
           return $query->result_array();
+     }
+
+     public function findCnicEmail($arr)
+     {
+          $this->db->select('*');
+          $this->db->from('users');
+          $this->db->where('user_email',$arr['user_email']);
+          $this->db->or_where('user_cnic',$arr['user_cnic']);
+          return $this->db->get()->result();
      }
 
 
