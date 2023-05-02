@@ -454,7 +454,8 @@
                               if($today<$deadline)
                               {
                             ?>
-                            <td><a data-target="#onlineApply" data-toggle="modal"  class="text-primary"><strong>Apply</strong></a></td>
+                            <!-- <td><a data-target="#onlineApply" data-toggle="modal"  class="text-primary"><strong>Apply</strong></a></td> -->
+                            <td><a href="<?= base_url('Customer/insertUpdateApplicants/'.$prjid) ?>" onclick="return confirm('Are you sure to apply?');"  class="text-primary"><strong>Apply</strong></a></td>
                             <?php
                               }else
                               {
@@ -463,7 +464,7 @@
                             <?php
                               }
                             ?>
-                           <td><a href="<?= base_url('Customer/insertUpdateApplicants/'.$prjid) ?>" onclick="return confirm('Are you sure to apply?');"  class="text-primary"><strong>Apply</strong></a></td>
+                           
                           </tr>
                             
 

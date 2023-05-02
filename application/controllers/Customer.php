@@ -107,7 +107,7 @@
         public function portal()
         {
             $userdata = $this->session->userdata('user');
-           
+            $_SESSION['activetab'] = (!empty($_SESSION['activetab']) ? $_SESSION['activetab'] :  $_SESSION['activetab'] = 'updateUserInfo');
             if(!empty($userdata))
             {
                 $userid               = $this->session->userdata('user')['user_id'];
@@ -349,9 +349,9 @@
     public function insertUpdateApplicants($prjid)
     {
          $prj_id        = $prjid;
-         $role_id      = 3;
-         $userid      = $this->session->userdata('user')['user_id'];
-         $prjrec = $this->API_m->singleRecord('projects',['prj_id'=>$prj_id]);
+         $role_id       = 3;
+         $userid        = $this->session->userdata('user')['user_id'];
+         $prjrec        = $this->API_m->singleRecord('projects',['prj_id'=>$prj_id]);
          $app_rev_date  = date('Y-m-d');
          $test_date     = $prjrec->prj_end_date;
          $test_time     = $prjrec->prj_end_date;
