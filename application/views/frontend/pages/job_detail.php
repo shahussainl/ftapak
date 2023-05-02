@@ -147,7 +147,7 @@
 									foreach($jobFiles as $files)
 									{
 								?>
-								<a href="<?= base_url('uploads/'.$files->prj_file); ?>" target="_blank" class="site-button">Click Download</a>
+								<a href="<?= base_url('uploads/'.$files->prj_file); ?>" target="_blank" class="site-button">Download Adveretisenment</a>
 								<?php		
 									}
 								?>
