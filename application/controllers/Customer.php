@@ -107,6 +107,7 @@
         public function portal()
         {
             $userdata = $this->session->userdata('user');
+           
             if(!empty($userdata))
             {
                 $userid               = $this->session->userdata('user')['user_id'];
@@ -179,6 +180,7 @@
 
             public function updateUserInfo()
             {
+                $_SESSION['activetab'] = 'updateUserInfo'; 
                 $name             = $this->input->post('name');
                 $fname            = $this->input->post('user_f_name');
                 $email            = $this->input->post('email');
@@ -287,6 +289,7 @@
 
             public function updateEducation()
             {
+                $_SESSION['activetab'] = 'updateEducation'; 
                 $qualification = $this->input->post('qualification');    
                 $subject       = $this->input->post('subject');  
                 $institute     = $this->input->post('institute');    
@@ -337,9 +340,52 @@
                 {
                     echo "Not Inserted";
                 }
+                $_SESSION['activetab'] = 'updateExperience'; 
                 $this->session->set_flashdata('success',' Record updated successfully');
                 redirect('Customer/portal');         
             }
+
+             // online apply for tests
+    public function insertUpdateApplicants($prjid)
+    {
+         $prj_id        = $prjid;
+         $role_id      = 3;
+         $userid      = $this->session->userdata('user')['user_id'];
+         $prjrec = $this->API_m->singleRecord('projects',['prj_id'=>$prj_id]);
+         $app_rev_date  = date('Y-m-d');
+         $test_date     = $prjrec->prj_end_date;
+         $test_time     = $prjrec->prj_end_date;
+        //    if(!empty($userCnic))
+        //    {
+                // ***** Application Table data
+                $appData = [
+                    'user_id'           => $userid,
+                    'prj_id'            => $prj_id,
+                    'app_received_date' => date('Y-m-d',strtotime($app_rev_date)),
+                    'test_date_time'    => date('Y-m-d',strtotime($test_date)).' '.date('H:i:s',strtotime($test_time)),
+                    'app_created_date'  => date('Y-m-d'),
+                    'app_created_by'    => $userid
+                ]; 
+                // $apRes = $this->API_m->singleRecord('applicants',['prj_id'=>$prj_id,'user_id'=>$userid]);
+                // if(!empty($apRes))
+                // {
+                //     $this->API_m->updateRecord('applicants',['app_id'=>$apRes->app_id],$appData);
+                // }
+                // else
+                // {
+                    $this->API_m->create('applicants',$appData);
+                    // email configuration  
+                        // $u_res   = $this->API_m->singleRecord('users',['user_id'=>$usr_id]);
+                        // $to      = $u_res->user_email;
+                        // $subject = "Job Portal";
+                        // $body    = "Dear Applicant!<br> Your Application for the applied job in job portal has been Received.<br>Your Date/Time : ".date('Y-m-d',strtotime($test_date));
+                        // $this->UserEmail_m->sendDataToEmail($to,$subject,$body);
+                    // end email configuration 
+                // }
+            // }
+              $this->session->set_flashdata('success','You have been Applied successfully');
+              redirect('Customer/portal');
+    }
 
 }
 

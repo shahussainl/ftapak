@@ -121,9 +121,9 @@
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#personal" data-toggle="tab">Personal</a></li>
-                <li><a href="#education" data-toggle="tab">Education</a></li>
-                <li><a href="#experience" data-toggle="tab">Experience</a></li>
+                <li class="<?php if($_SESSION['activetab']=='updateUserInfo'){echo 'active'; } ?>"><a href="#personal" data-toggle="tab">Personal</a></li>
+                <li class="<?php if($_SESSION['activetab']=='updateEducation'){echo 'active'; } ?>"><a href="#education" data-toggle="tab">Education</a></li>
+                <li class="<?php if($_SESSION['activetab']=='updateExperience'){echo 'active'; } ?>"><a href="#experience" data-toggle="tab">Experience</a></li>
                 <!-- <li><a href="#courses" data-toggle="tab">Courses/Skill</a></li> -->
                 <li ><a href="#activity" data-toggle="tab">Positions Applied</a></li>
                 <li ><a href="#activejobs" data-toggle="tab">Active Jobs</a></li>
@@ -158,7 +158,7 @@
                 ?>
               </div>
               <!-- tab pane personal -->
-              <div class="tab-pane active" id="personal">
+              <div class="tab-pane <?php if($_SESSION['activetab']=='updateUserInfo'){echo 'active'; } ?>" id="personal">
               <div class="row">
                  <div class="col-md-6">      
                    <form method="post" action="<?php echo base_url('Customer/updateUserInfo');?>" enctype="multipart/form-data">
@@ -256,7 +256,7 @@
               <!-- /.row -->
               </div>
               <!-- tab-pane education -->
-              <div class="tab-pane" id="education">
+              <div class="tab-pane <?php if($_SESSION['activetab']=='updateEducation'){echo 'active'; } ?>" id="education">
                 <div class="row">
                   <div class="col-md-12">
                     <table class="table table-striped">
@@ -339,7 +339,7 @@
                 </form>    
               </div>
                <!-- tab-pane experience -->
-               <div class="tab-pane" id="experience">
+               <div class="tab-pane <?php if($_SESSION['activetab']=='updateExperience'){echo 'active'; } ?>" id="experience">
                <div class="row">
                   <div class="col-md-12">
                     <table class="table table-striped">
@@ -377,6 +377,7 @@
                   </div>
                 </div>
                 <form method="post" action="<?php echo base_url('Customer/updateExperience');?>" enctype="multipart/form-data">
+                    
                     <div class="box-body">
                         <div class="form-row">
                           <div class="form-group col-md-2">
@@ -436,6 +437,7 @@
                            $c = 1;
                               foreach($activejobs as $job)
                               {
+                                $prjid = $job['prj_id'];
                                 $today    = date('Y-m-d');
                                 $deadline = $job['prj_start_date'];
                           ?>
@@ -452,7 +454,7 @@
                               if($today<$deadline)
                               {
                             ?>
-                            <td><a href="#"  class="text-primary"><strong>Apply</strong></a></td>
+                            <td><a data-target="#onlineApply" data-toggle="modal"  class="text-primary"><strong>Apply</strong></a></td>
                             <?php
                               }else
                               {
@@ -461,8 +463,11 @@
                             <?php
                               }
                             ?>
-                           
+                           <td><a href="<?= base_url('Customer/insertUpdateApplicants/'.$prjid) ?>" onclick="return confirm('Are you sure to apply?');"  class="text-primary"><strong>Apply</strong></a></td>
                           </tr>
+                            
+
+
                           <?php
                            $c++;
                               }
