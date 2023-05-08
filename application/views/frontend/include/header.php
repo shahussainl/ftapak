@@ -35,41 +35,34 @@
 							<li class="<?php if($ci=='Job' && $mtd=='index'){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Job/index');?>">Home <i class=""></i></a>
 							</li>
-						    <li class="<?php if($ci=='Pages' && $mtd=='about_usView' || $mtd=='aboutDetail'){ echo 'active'; } ?>">
-								<a href="<?php echo base_url('Pages/about_usView');?>">About Us <i class=""></i></a>
-							</li>
-							<li class="<?php if($ci=='Pages' && $mtd=='all_jobs' || $mtd=='company_jobs' || $mtd=='designation_jobs' || $mtd=='category_jobs' || $mtd=='skill_jobs' || $mtd=='job_Detail'){echo 'active';} ?>">
+
+							<!-- <li class="<?php if($ci=='Pages' && $mtd=='all_jobs' || $mtd=='company_jobs' || $mtd=='designation_jobs' || $mtd=='category_jobs' || $mtd=='skill_jobs' || $mtd=='job_Detail'){echo 'active';} ?>">
 								<a href="<?php echo base_url('Pages/all_jobs');?>">Jobs <i class=""></i></a>
-							</li>
-						    <!-- <li class="<?php //if($ci=='Pages' && $mtd=='all_jobs' || $mtd=='company_jobs' || $mtd=='designation_jobs' || $mtd=='category_jobs' || $mtd=='skill_jobs'){echo 'active';} ?>">
-								<a href="javascript:void(0);" >Jobs <i class="fa fa-chevron-down"></i></a>
-								<ul class="sub-menu">
-							    	
-									<li><a href="<php // echo base_url('Pages/all_jobs');?>" class="dez-page">all jobs <span class="new-page">New</span></a></li>
-									<li><a href="<php // echo base_url('Pages/company_jobs');?>" class="dez-page">company jobs <span class="new-page">New</span></a></li>
-									<li><a href="<php // echo base_url('Pages/designation_jobs');?>" class="dez-page">designations jobs <span class="new-page">New</span></a></li>
-									<li><a href="<php // echo base_url('Pages/category_jobs');?>" class="dez-page">category jobs <span class="new-page">New</span></a></li>
-									<li><a href="<php // echo base_url('Pages/location_jobs');?>" class="dez-page">location jobs <span class="new-page">New</span></a></li>
-									<li><a href="<php // echo base_url('Pages/skill_jobs');?>" class="dez-page">skill jobs <span class="new-page">New</span></a></li>
-									<li><a href="<php // echo base_url('Pages/all_jobs');?>" class="dez-page">browse filter list <span class="new-page">New</span></a></li>	
-								</ul>
 							</li> -->
-						    <li class="<?php if($ci=='Job' && $mtd=='test_result'){ echo 'active'; } ?>">
-								<a href="<?php echo base_url('Job/test_result');?>">Result <i class=""></i></a>
+
+							<li class="<?php if($ci=='Job' && $mtd=='check_eligibility'){ echo 'active'; } ?>">
+								<a href="<?php echo base_url('Job/check_eligibility');?>">List of Candidate <i class=""></i></a>
 							</li>
+
 							<li class="<?php if($ci=='Job' && $mtd=='check_rollno_slip'){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Job/check_rollno_slip');?>">Roll No <i class=""></i></a>
 							</li>
-							<li class="<?php if($ci=='Pages' && $mtd=='newsFeed'|| $mtd=='newsFeedDetail'){ echo 'active'; } ?>">
+						    <li class="<?php if($ci=='Job' && $mtd=='test_result'){ echo 'active'; } ?>">
+								<a href="<?php echo base_url('Job/test_result');?>">Results <i class=""></i></a>
+							</li>
+						
+							<!-- <li class="<?php if($ci=='Pages' && $mtd=='newsFeed'|| $mtd=='newsFeedDetail'){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Pages/newsFeed');?>">NewsFeed <i class=""></i></a>
 							</li>
 							<li class="<?php if($ci=='Pages' && $mtd=='administration' || $mtd=='stopMsgViewDetail'){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Pages/administration');?>">Administration <i class=""></i></a>
-							</li>
+							</li> -->
 							<li class="<?php if($ci=='Pages' && $mtd=='contactUs'){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Pages/contactUs');?>">Contact Us <i class=""></i></a>
 							</li>
-						
+							<li class="<?php if($ci=='Pages' && $mtd=='about_usView' || $mtd=='aboutDetail'){ echo 'active'; } ?>">
+								<a href="<?php echo base_url('Pages/about_usView');?>">About Us <i class=""></i></a>
+							</li>						
 						</ul>			
                     </div>
                 </div>
