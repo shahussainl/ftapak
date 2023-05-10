@@ -49,7 +49,8 @@ $config['last_link']      = false;
 $this->pagination->initialize($config);  
 
 $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-$result['getAllJob'] = $this->Job_m->fetch_blogs($config["per_page"], $page);
+$result['getAllJob']      = $this->Job_m->fetch_blogs($config["per_page"], $page);
+$result['jobFiles'] = $this->Job_m->getAllJobFiles();
 
          // echo $this->pagination->create_links();
          // die();

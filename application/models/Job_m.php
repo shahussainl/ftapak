@@ -41,6 +41,13 @@
                        ->where('project_id',$id)
                        ->get()->result();
     }
+    public function getAllJobFiles()
+    {
+      return $this->db->select('*')
+                       ->from('prj_img')
+                      //  ->where('project_id',$id)
+                       ->get()->result();
+    }
     public function getAllJobByCityName($limit=null)
     {
       if($limit!=null)

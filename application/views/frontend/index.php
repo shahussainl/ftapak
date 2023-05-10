@@ -45,20 +45,36 @@
 												<!-- <li><i class="fa fa-bookmark-o"></i> Full Time</li> -->
 												<li><i class="fa fa-clock-o"></i><?php echo date('d M y',strtotime($row['prj_start_date'])).' - '.date('d M y',strtotime($row['prj_end_date'])); ?></li>
 											</ul>
+											<p><?= $row['prj_desc']; ?></p>
 										</div>
 									</div>
-									<!-- <div class="d-flex">
+									 <div class="d-flex">
 										<div class="job-time mr-auto">
-											<a href="javascript:void(0);"><span>Full Time</span></a>
+										<?php
+										if(!empty($jobFiles))
+										{
+											foreach($jobFiles as $files)
+											{
+												if($row['prj_id']  == $files->project_id)
+												{
+										?>
+										<a href="<?= base_url('uploads/'.$files->prj_file); ?>"><span><?= $files->img_title;?></span></a>
+										<!-- <a href="<= base_url('uploads/'.$files->prj_file); ?>" target="_blank" class="site-button"><= $files->img_title;?></a> -->
+										<?php		
+												}
+											}
+										}
+										?>
 										</div>
-										<div class="salary-bx">
+										
+										<!-- <div class="salary-bx">
 											<span>$1200 - $ 2500</span>
-										</div>
+										</div> -->
 									</div>
 									<label class="like-btn">
 										  <input type="checkbox">
 										  <span class="checkmark"></span>
-									</label> -->
+									</label>
 								</div>
 							</li>
                          <?php
