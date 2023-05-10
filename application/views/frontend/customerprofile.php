@@ -121,9 +121,9 @@
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="<?php if($_SESSION['activetab']=='updateUserInfo'){echo 'active'; } ?>"><a href="#personal" data-toggle="tab">Personal</a></li>
-                <li class="<?php if($_SESSION['activetab']=='updateEducation'){echo 'active'; } ?>"><a href="#education" data-toggle="tab">Education</a></li>
-                <li class="<?php if($_SESSION['activetab']=='updateExperience'){echo 'active'; } ?>"><a href="#experience" data-toggle="tab">Experience</a></li>
+                <!-- <li class="<php if($_SESSION['activetab']=='updateUserInfo'){echo 'active'; } ?>"><a href="#personal" data-toggle="tab">Personal</a></li> -->
+                <!-- <li class="<php if($_SESSION['activetab']=='updateEducation'){echo 'active'; } ?>"><a href="#education" data-toggle="tab">Education</a></li> -->
+                <!-- <li class="<php if($_SESSION['activetab']=='updateExperience'){echo 'active'; } ?>"><a href="#experience" data-toggle="tab">Experience</a></li> -->
                 <!-- <li><a href="#courses" data-toggle="tab">Courses/Skill</a></li> -->
                 <li ><a href="#activity" data-toggle="tab">Positions Applied</a></li>
                 <li ><a href="#activejobs" data-toggle="tab">Active Jobs</a></li>
