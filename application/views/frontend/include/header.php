@@ -23,10 +23,10 @@
 						<span></span>
 					</button>
                     <!-- extra nav -->
-                    <div class="extra-nav">
+                    <div class="extra-nav" style="display:none;"> 
                         <div class="extra-cell">
                             <!-- <a href="register-2.html" class="site-button"><i class="fa fa-user"></i> Sign Up</a> -->
-							<a href="<?= base_url('Customer');?>" title="SIGN IN" rel="SIGN IN"  class="site-button"><i class="fa fa-lock"></i> login </a>
+							<!-- <a href="javascript:void(0)" title="SIGN IN" rel="SIGN IN"  class="site-button"><i class="fa fa-lock"></i> login </a> -->
                         </div>
                     </div>
                     <!-- main nav -->

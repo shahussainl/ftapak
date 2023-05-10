@@ -94,23 +94,36 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="sticky-top">
+							<h4>News Feed</h4>
 							<div class="candidates-are-sys m-b30">
 								<div class="candidates-bx">
-									<div class="testimonial-pic radius">
-										<img src="<?php echo base_url('front_asset/images/testimonials/pic3.jpg');?>" alt="" width="100" height="100"></div>
-									<div class="testimonial-text">
-										<p>I just got a job that I applied for via careerfy! I used the site all the time during my job hunt.</p>
+									<div class="testimonial-pic radius" style="width: 150px !important;">
+										<!-- <img src="<php echo base_url('front_asset/images/testimonials/pic3.jpg');?>" alt="" width="100" height="100"></div> -->
+									<div class="testimonial-text" style="width: 250px !important;">
+									<marquee behavior="scroll" direction="up" scrollamount="2" height="200px">
+										<?php 
+											if(!empty($recentNews))
+											{
+												foreach($recentNews as $news)
+												{
+										?>
+													<li><a href="<?= base_url('Pages/newsFeedDetail/'.$news['n_u_id']);?>"><?= $news['n_u_title']; ?></a></li>
+										<?php
+												}
+											}
+										?>
+									</marquee>
 									</div>
-									<div class="testimonial-detail"> <strong class="testimonial-name">Richard Anderson</strong> <span class="testimonial-position">Nevada, USA</span> </div>
+									<!-- <div class="testimonial-detail"> <strong class="testimonial-name">Richard Anderson</strong> <span class="testimonial-position">Nevada, USA</span> </div> -->
 								</div>
 							</div>
-							<div class="quote-bx">
+							<!-- <div class="quote-bx">
 								<div class="quote-info">
 									<h4>Make a Difference with Your Online Resume!</h4>
 									<p>Your resume in minutes with JobBoard resume assistant is ready!</p>
 									<a href="#" class="site-button">Job</a>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -119,7 +132,7 @@
 		<!-- Our Job END -->	
 		<!-- Call To Action -->
 		<!-- <div class="section-full p-tb70 overlay-black-dark text-white text-center bg-img-fix" 
-		       style="background-image: url(<?php //echo base_url('front_asset/images/background/bg4.jpg')?>);">
+		       style="background-image: url(<php //echo base_url('front_asset/images/background/bg4.jpg')?>);">
 			<div class="container">
 				<div class="section-head text-center text-white">
 					<h2 class="m-b5">Testimonials</h2>
@@ -133,7 +146,7 @@
 							</div>
 							<div class="testimonial-detail clearfix">
 								<div class="testimonial-pic radius shadow">
-									<img src="<?php //echo base_url('front_asset/images/testimonials/pic1.jpg');?>" width="100" height="100" alt="">
+									<img src="<php //echo base_url('front_asset/images/testimonials/pic1.jpg');?>" width="100" height="100" alt="">
 								</div>
 								<strong class="testimonial-name">David Matin</strong> 
 								<span class="testimonial-position">Student</span> 
@@ -147,7 +160,7 @@
 							</div>
 							<div class="testimonial-detail clearfix">
 								<div class="testimonial-pic radius shadow">
-									<img src="<?php //echo base_url('front_asset/images/testimonials/pic2.jpg');?>" width="100" height="100" alt="">
+									<img src="<php //echo base_url('front_asset/images/testimonials/pic2.jpg');?>" width="100" height="100" alt="">
 								</div>
 								<strong class="testimonial-name">David Matin</strong> 
 								<span class="testimonial-position">Student</span> 
@@ -161,7 +174,7 @@
 							</div>
 							<div class="testimonial-detail clearfix">
 								<div class="testimonial-pic radius shadow">
-									<img src="<?php //echo base_url('front_asset/images/testimonials/pic3.jpg');?>" width="100" height="100" alt="">
+									<img src="<php //echo base_url('front_asset/images/testimonials/pic3.jpg');?>" width="100" height="100" alt="">
 								</div>
 								<strong class="testimonial-name">David Matin</strong> 
 								<span class="testimonial-position">Student</span> 
@@ -174,7 +187,7 @@
 		<!-- Call To Action END -->
 		<!-- Our Latest Blog -->
 		<!-- <div class="section-full content-inner-2 overlay-white-middle" 
-		     style="background-image:url(<?php //echo base_url('front_asset/images/lines.png');?>); background-position:bottom; background-repeat:no-repeat; background-size: 100%;">
+		     style="background-image:url(<php //echo base_url('front_asset/images/lines.png');?>); background-position:bottom; background-repeat:no-repeat; background-size: 100%;">
 			<div class="container">
 				<div class="section-head text-black text-center">
 					<h2 class="m-b0">Membership Plans</h2>

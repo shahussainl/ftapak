@@ -51,7 +51,7 @@ $this->pagination->initialize($config);
 $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 $result['getAllJob']      = $this->Job_m->fetch_blogs($config["per_page"], $page);
 $result['jobFiles'] = $this->Job_m->getAllJobFiles();
-
+$result['recentNews']=$this->Pages_m->getRecentNews();
          // echo $this->pagination->create_links();
          // die();
        	  $this->load->view('frontend/include/head');
