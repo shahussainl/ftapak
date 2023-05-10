@@ -57,6 +57,7 @@
 								<th>Obt Marks</th>
 								<th>Total Marks</th>
 								<th>%</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,8 +66,8 @@
 								foreach($data as $rec)
 								{
 							?>
-							
-				<tr onclick="window.location.href='<?= base_url('Job/result_print_view/'.$rec->user_id.'/'.$rec->rs_prj_id.'/'.$rec->user_cnic); ?>';">
+							<!-- onclick="window.location.href='<= base_url('Job/result_print_view/'.$rec->user_id.'/'.$rec->rs_prj_id.'/'.$rec->user_cnic); ?>';" -->
+							<tr>
 								<td><?= $sn;                    ?></td>
 								<td><?= $rec->user_fullname;    ?></td>
 								<td><?= $rec->user_contact;     ?></td>
@@ -76,7 +77,7 @@
 								<td><?php if($rec->obt_marks!=''){ echo $rec->obt_marks; }else{ echo 'Pending'; }        ?></td>
 								<td><?php if($rec->obt_marks!=''){ echo $rec->prj_total_marks; }else{ echo 'Pending'; }  ?></td>
 								<td><?php if($rec->percentage!=''){ echo $rec->percentage; }else{ echo 'Pending'; }      ?></td>
-							
+								<td><a href="<?= base_url('Job/result_print_view/'.$rec->user_id.'/'.$rec->rs_prj_id.'/'.$rec->user_cnic); ?>"><i class="fa fa-print"></i>Print</a></td>
 							</tr>
 							
 							<?php

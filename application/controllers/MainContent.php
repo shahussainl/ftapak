@@ -848,7 +848,8 @@ $this->session->set_flashdata('success','Applicants Record added successfully');
           $userEmail    = $this->input->post('user_email');
           $userContact  = $this->input->post('user_contact');
           $userAddr     = $this->input->post('address');
-
+          $remarks      = $this->input->post('remarks');
+          
           if(!empty($userCnic))
           {
             // $this->API_m->delete('applicants',['prj_id'=>$prj_id]);
@@ -903,6 +904,7 @@ $this->session->set_flashdata('success','Applicants Record added successfully');
                     $appData = [
                           'user_id'           => $userid,
                           'prj_id'            => $prj_id,
+                          'remarks'           => $remarks[$i],
                           'app_received_date' => date('Y-m-d',strtotime($app_rev_date[$i])),
                           'test_date_time'    => date('Y-m-d',strtotime($test_date)).' '.date('H:i:s',strtotime($test_time)),
                           'app_created_date'  => date('Y-m-d'),

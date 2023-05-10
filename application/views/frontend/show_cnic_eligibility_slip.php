@@ -21,7 +21,7 @@
 					<div class=" job-search-form">
 						<h2 class="text-center">Enter your CNIC number to find test rollno</h2>
 						<h3>Find your test rollno</h3>
-						<form method="post" action="<?// base_url('Job/show_cnic_rollno_slip'); ?>">
+						<form method="post" action="<// base_url('Job/show_cnic_rollno_slip'); ?>">
 							<div class="input-group">
 								<input type="text" name="cnic_rollno_slip" class="form-control" placeholder="i.e 11xxx-xxxxxxx-x" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask="" >
 								<div class="input-group-prepend">
@@ -42,21 +42,21 @@
 						{
 				?>
 				<div class="section-head text-black text-center">
-					<h2 class="text-uppercase m-b0 ">Rollno Slip</h2>
+					<h2 class="text-uppercase m-b0 ">Eligibility</h2>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
 					<table class="table table-striped">
 						<thead class="bg-dark" style="color:white !important;">
 							<tr>
 								<th>Serial</th>
-								<th>Name</th>
-								<th>CNIC</th>
-								<th>Mobile</th>
 								<th>Applied Post</th>
-								<th>Rollno</th>
-								<th>Test Center</th>
-								<th>Test Date/Time</th>
+								<th>CNIC</th>
+								<th>Name</th>
+								<th>Mobile</th>
+								<!-- <th>Rollno</th> -->
+								<!-- <th>Test Center</th> -->
+								<!-- <th>Test Date/Time</th> -->
 								<th>Address</th>
-								<th>Action</th>
+								<th>Remarks</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -68,15 +68,15 @@
 							<!-- onclick="window.location.href='<= base_url('Job/rollno_print_view/'.$rec->user_id.'/'.$rec->prj_id.'/'.$rec->user_cnic); ?>';" -->
 							<tr >
 								<td><?= $sn;				                                                 ?></td>
-								<td><?= $rec->user_fullname;                                                 ?></td>
-								<td><?= $rec->user_cnic;                                                     ?></td>
-								<td><?= $rec->user_contact;                                                  ?></td>
 								<td><?= $rec->prj_name;                                                      ?></td>
-								<td><?php if($rec->roll_no!=''){ echo $rec->roll_no;}else {echo 'Pending';}  ?></td>
-								<td><?php if($rec->name!=''){ echo $rec->name;}else {echo 'Pending';}        ?></td>
-								<td><?php if($rec->test_date_time!=''){ echo date('d M Y h:i a',strtotime($rec->test_date_time)); }else {echo 'Pending';}    													  ?></td>
+								<td><?= $rec->user_cnic;                                                     ?></td>
+								<td><?= $rec->user_fullname;                                                 ?></td>
+								<td><?= $rec->user_contact;                                                  ?></td>
+								<!-- <td><php if($rec->roll_no!=''){ echo $rec->roll_no;}else {echo 'Pending';}  ?></td> -->
+								<!-- <td><php if($rec->name!=''){ echo $rec->name;}else {echo 'Pending';}        ?></td> -->
+								<!-- <td><php if($rec->test_date_time!=''){ echo date('d M Y h:i a',strtotime($rec->test_date_time)); }else {echo 'Pending';}    													  ?></td> -->
 								<td><?php if($rec->address!=''){ echo $rec->address;}else {echo 'Pending';}  ?></td>
-								<td><a href="<?= base_url('Job/rollno_print_view/'.$rec->user_id.'/'.$rec->prj_id.'/'.$rec->user_cnic); ?>"><i class="fa fa-print"></i>Print</a></td>
+								<td><?= (!empty($rec->remarks) ? $rec->remarks : '-');?></td>
 							</tr>
 	
 							<?php		

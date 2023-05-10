@@ -186,6 +186,19 @@
                        ->where('u.user_cnic',$cnic)
                        ->get()->result();
     }
+    public function findCnicEligible($cnic)
+    {
+       return $this->db->select('*')
+                       ->from('rollno as rl')
+                       ->join('applicants as app','app.app_id=rl.app_id','left')
+                       ->join('applicant_test_center as atc','atc.tc_app_id=app.app_id','left')
+                       ->join('test_center as tc','tc.center_id=atc.tc_center_id','left')
+                       ->join('projects as prj','prj.prj_id=rl.prj_id','left')
+                       ->join('users as u','u.user_id=rl.user_id','left')
+                       ->where('u.user_is_trash',0)
+                       ->where('u.user_cnic',$cnic)
+                       ->get()->result();
+    }
 
 // printing single result record
 

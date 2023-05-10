@@ -48,7 +48,7 @@ if($data!='')
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <!-- onload="window.print();" -->
-<body >
+<body  onload="window.print();">
 <div class="wrapper">
   <!-- Main content -->
   <section class="invoice">
@@ -67,9 +67,9 @@ if($data!='')
     </div>
     <hr>
     <div class="row">
-      <div class="col-xs-6 col-xs-offset-3">
+      <div class="col-xs-6 col-xs-offset-3" style="display:none;">
       	<?php
-      		$org = $this->API_m->singleRecord('organization',['org_id'=>$data->org_id]);
+      		// $org = $this->API_m->singleRecord('organization',['org_id'=>$data->org_id]);
       	?>
         <h2 class="page-header text-center">
         	<img class="img-circle img-bordered-sm" style="width: 60px; height: 60px;" src="<?php if(!empty($org->org_logo)){ echo base_url('/uploads/'.$org->org_logo); } ?>" alt="user image">

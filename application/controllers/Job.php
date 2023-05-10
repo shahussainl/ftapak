@@ -72,6 +72,13 @@ $result['getAllJob'] = $this->Job_m->fetch_blogs($config["per_page"], $page);
           $this->load->view('frontend/check_rollno_slip');
           $this->load->view('frontend/include/footer');
        }
+       public function check_eligibility()
+       {
+          $this->load->view('frontend/include/head');
+          $this->load->view('frontend/include/header');
+          $this->load->view('frontend/check_eligibility');
+          $this->load->view('frontend/include/footer');
+       }
        public function test_result()
        {
           $this->load->view('frontend/include/head');
@@ -105,6 +112,16 @@ $result['getAllJob'] = $this->Job_m->fetch_blogs($config["per_page"], $page);
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');
           $this->load->view('frontend/show_cnic_rollno_slip',$result);
+          $this->load->view('frontend/include/footer'); 
+      }
+      // showing test show_cnic_eligibility of searched cnic
+      public function show_cnic_eligibility()
+      {
+          $cnic = $this->input->post('cnic_slip');
+          $result['data'] = $this->Job_m->findCnicEligible($cnic);
+          $this->load->view('frontend/include/head');
+          $this->load->view('frontend/include/header');
+          $this->load->view('frontend/show_cnic_eligibility_slip',$result);
           $this->load->view('frontend/include/footer'); 
       }
 // result print view

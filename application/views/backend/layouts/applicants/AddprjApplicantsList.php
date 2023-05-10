@@ -138,6 +138,7 @@
                                     <th>EMAIL</th>
                                     <th>AR DATE</th>
                                     <th>CITY</th>
+                                    <th>Remarks</th>
                                     <th>ATTENDENCE</th>
                                     <th>OBT MARKS</th>
                                     <th>TOTAL MARKS</th>
@@ -158,8 +159,8 @@
 
                                   </td>
                                   <td>
-                                    <input type="text" name="roll_no[]" class="form-control roll_no" value="<?php if(!empty($list->roll_no)){ echo $list->roll_no; }?>" disabled>
-                                     <input type="hidden" name="roll_no[]" class="form-control roll_no" value="<?php if(!empty($list->roll_no)){ echo $list->roll_no; }?>" disabled>
+                                    <input type="text" name="roll_no[]" class="form-control roll_no" value="<?php if(!empty($list->roll_no)){ echo $list->roll_no; }?>" >
+                                     <input type="hidden" name="roll_no[]" class="form-control roll_no" value="<?php if(!empty($list->roll_no)){ echo $list->roll_no; }?>" >
                                   </td>
                                   
                                   <td>
@@ -176,6 +177,13 @@
                                   </td>
                                    <td>
                                     <input type="text" name="address[]" class="form-control user_address" value="<?php if(!empty($list->user_address)){ echo $list->user_address; }?>">
+                                  </td>
+                                  <td>
+                                    <select name="remarks[]" class="form-control user_remarks" >
+                                      <option value="">-</option>
+                                      <option value="ELigible">ELigible</option>
+                                      <option value="Not ELigible">Not ELigible</option>
+                                    </select>
                                   </td>
                                   <td>
                                     <input type="text" name="attendence[]" class="form-control attendence" value="<?php if(!empty($list->status=='P')){ echo 'Present'; }elseif(!empty($list->status=='A')){ echo'Absent'; } ?>" disabled>
@@ -206,7 +214,7 @@
                                     <input type="hidden" name="user_id[]" id="user_id" value="">
                                   </td>
                                   <td>
-                                    <input type="text" name="roll_no[]" class="form-control roll_no" value="" disabled>
+                                    <input type="text" name="roll_no[]" class="form-control roll_no" value="" >
                                      <input type="hidden" name="roll_no[]" class="form-control roll_no" value="">
                                   </td>
                                   <td>
@@ -225,6 +233,13 @@
                                     <input type="text" name="address[]" class="form-control user_address" value="">
                                   </td>
                                   <td>
+                                    <select name="remarks[]" class="form-control user_remarks" >
+                                      <option value="">-</option>
+                                      <option value="ELigible">ELigible</option>
+                                      <option value="Not ELigible">Not ELigible</option>
+                                    </select>
+                                  </td>
+                                  <td>
                                     <input type="text" name="attendence[]" class="form-control attendence" value="" disabled>
                                      <input type="hidden" name="attendence[]" class="form-control attendence" value="">
                                   </td>
@@ -233,7 +248,7 @@
                                      <input type="hidden" name="obt_mark[]" class="form-control obt_mark" value="" >
                                   </td>
                                    <td>
-                                    <input type="text" name="ttl_mark[]" class="form-control ttl_mark" value="<?php if(!empty($prj_t_marks)){ echo $prj_t_marks; }?>" disabled>
+                                    <input type="text" name="ttl_mark[]" class="form-control ttl_mark" value="<?php if(!empty($prj_t_marks)){ echo $prj_t_marks; }?>" >
                                      <input type="hidden" name="ttl_mark[]" class="form-control ttl_mark" value="<?php if(!empty($prj_t_marks)){ echo $prj_t_marks; }?>" >
                                   </td>
                                 </tr>
@@ -460,7 +475,7 @@ Applicant List2
                     $(obj).closest('tr').find('.user_f_name').val('');
                     $(obj).closest('tr').find('.user_email').val('');
                     $(obj).closest('tr').find('#user_id').val('');
-                    // $(obj).closest('tr').find('#kt_select2_4').val('').change();
+                    // $(obj).closest('tr').find('.user_remarks').val('').change();
                     $(obj).closest('tr').find('.user_contact').val('');
                     $(obj).closest('tr').find('.user_address').val('');
                     
