@@ -849,7 +849,13 @@ $this->session->set_flashdata('success','Applicants Record added successfully');
           $userContact  = $this->input->post('user_contact');
           $userAddr     = $this->input->post('address');
           $remarks      = $this->input->post('remarks');
-          
+          $user_fname   = $this->input->post('user_fname');
+          $dob          = $this->input->post('dob');
+          $gender       = $this->input->post('gender');
+          $religion     = $this->input->post('religion');
+          $district     = $this->input->post('district');
+          $province     = $this->input->post('province');
+          $address      = $this->input->post('address');
           if(!empty($userCnic))
           {
             // $this->API_m->delete('applicants',['prj_id'=>$prj_id]);
@@ -859,6 +865,7 @@ $this->session->set_flashdata('success','Applicants Record added successfully');
                $usr_id ='';
               if(!empty($userCnic[$i]))
               {
+                
                $userData =
                       array(
                          'user_fullname'     => $userName[$i],
@@ -866,6 +873,12 @@ $this->session->set_flashdata('success','Applicants Record added successfully');
                          'user_email'        => $userEmail[$i],
                          'user_cnic'         => $userCnic[$i],
                          'user_contact'      => $userContact[$i],
+                         'user_father_name'  => $user_fname[$i], 
+                         'dob'               => date('Y-m-d',strtotime($dob[$i])), 
+                         'gender'            => $gender[$i], 
+                         'religion'          => $religion[$i], 
+                         'district'          => $district[$i], 
+                         'province'          => $province[$i], 
                          'user_address'      => $userAddr[$i],
                          'role_id'           => $role_id,
                          'user_created_date' => date('Y-m-d'),

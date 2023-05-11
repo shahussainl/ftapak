@@ -10,7 +10,17 @@
  // exit();
 
 ?>
-
+<style> 
+ .table_wrapper{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.form-control {
+    display: block;
+    width: 150px !important;
+}
+</style> 
 
 
 
@@ -124,7 +134,7 @@
                                   <!-- Project Name: <label for="inputPassword4"><?= $prj_name; ?></label> -->
                                 </div>
                               </div>
-                              <table class="table table-striped">
+                              <table class="table table-striped table_wrapper">
                                 <thead>
                                   <tr>
                                     <span id="errMsg"></span>
@@ -134,11 +144,17 @@
                                     <th>CNIC</th>
                                     <th>ROLLNO</th>
                                     <th>NAME</th>
+                                    <th>F/NAME</th>
                                     <th>CONTACT</th>
                                     <th>EMAIL</th>
                                     <th>AR DATE</th>
-                                    <th>CITY</th>
-                                    <th>Remarks</th>
+                                    <th>DoB</th>
+                                    <th>GENDER</th>
+                                    <th>RELIGION</th>
+                                    <th>DISTRICT</th>
+                                    <th>PROVINCE</th>
+                                    <th>ADDRESS</th>
+                                    <th>REMARKS</th>
                                     <th>ATTENDENCE</th>
                                     <th>OBT MARKS</th>
                                     <th>TOTAL MARKS</th>
@@ -158,13 +174,16 @@
                                     <input type="hidden" name="user_id[]" id="user_id" value="<?php if(!empty($list->user_id)){ echo $list->user_id; }?>">
 
                                   </td>
-                                  <td>
+                                  <td style="width: 100px !important;">
                                     <input type="text" name="roll_no[]" class="form-control roll_no" value="<?php if(!empty($list->roll_no)){ echo $list->roll_no; }?>" >
                                      <input type="hidden" name="roll_no[]" class="form-control roll_no" value="<?php if(!empty($list->roll_no)){ echo $list->roll_no; }?>" >
                                   </td>
                                   
                                   <td>
                                     <input type="text" name="user_name[]" class="form-control user_fullname" value="<?php if(!empty($list->user_fullname)){ echo $list->user_fullname; }?>">
+                                  </td>
+                                  <td>
+                                    <input type="text" name="user_fname[]" class="form-control user_fname" value="<?php if(!empty($list->user_father_name)){ echo $list->user_father_name; }?>">
                                   </td>
                                   <td>
                                     <input type="text" name="user_contact[]" class="form-control user_contact" value="<?php if(!empty($list->user_contact)){ echo $list->user_contact; }?>" data-inputmask="&quot;mask&quot;: &quot;9999-9999999&quot;" data-mask="">
@@ -175,14 +194,42 @@
                                   <td>
                                       <input type="text" name="ar_date[]" onclick="sdDate()" class="form-control arDate" value="<?php if(!empty($list->app_received_date)){ echo $list->app_received_date; }?>" required>
                                   </td>
+                                  <td>
+                                    <input type="date" name="dob[]"  class="form-control " value="<?php if(!empty($list->dob)){ echo date('m/d/Y',strtotime($list->dob)); }?>">
+                                  </td>
+                                  <td>
+                                    <select name="gender[]" class="form-control user_gender" >
+                                      <option value="">-</option>
+                                      <option <?php if($list->gender=='Male'){ echo 'selected'; } ?> value="Male">Male</option>
+                                      <option <?php if($list->gender=='Female'){ echo 'selected'; } ?> value="Female">Female</option>
+                                      <option <?php if($list->gender=='Other'){ echo 'selected'; } ?> value="Other">Other</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <select name="religion[]" class="form-control user_religion" >
+                                      <option value="">-</option>
+                                      <option <?php if($list->religion=='Muslim'){ echo 'selected'; } ?>  value="Muslim">Muslim</option>
+                                      <option <?php if($list->religion=='Christian'){ echo 'selected'; } ?>  value="Christian">Christian</option>
+                                      <option <?php if($list->religion=='Jew'){ echo 'selected'; } ?>  value="Jew">Jew</option>
+                                      <option <?php if($list->religion=='Sikh'){ echo 'selected'; } ?>  value="Sikh">Sikh</option>
+                                      <option <?php if($list->religion=='Hindu'){ echo 'selected'; } ?>  value="Hindu">Other</option>
+                                      <option <?php if($list->religion=='Other'){ echo 'selected'; } ?>  value="Other">Other</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input type="text" name="district[]" class="form-control user_district" value="<?php if(!empty($list->district)){ echo $list->district; }?>">
+                                  </td>
+                                  <td>
+                                    <input type="text" name="province[]" class="form-control user_province" value="<?php if(!empty($list->province)){ echo $list->province; }?>">
+                                  </td>
                                    <td>
-                                    <input type="text" name="address[]" class="form-control user_address" value="<?php if(!empty($list->user_address)){ echo $list->user_address; }?>">
+                                    <input type="text" name="address[]" class="form-control user_address" value="<?php if(!empty($list->address)){ echo $list->address; }?>">
                                   </td>
                                   <td>
                                     <select name="remarks[]" class="form-control user_remarks" >
                                       <option value="">-</option>
-                                      <option value="ELigible">ELigible</option>
-                                      <option value="Not ELigible">Not ELigible</option>
+                                      <option <?php if(!empty($list->remarks=='ELigible')){ echo 'selected'; }?> value="ELigible">ELigible</option>
+                                      <option <?php if(!empty($list->remarks=='Rejected')){ echo 'selected'; }?> value="Rejected">Rejected</option>
                                     </select>
                                   </td>
                                   <td>
@@ -209,7 +256,7 @@
                                           <input type="checkbox" onclick="checkId()"  class="minimal myCustomCheckBox ch_ID" name="app_id" value="">
                                       </label>
                                   </td>
-                                  <td>
+                                  <td style="width: 100px !important;">
                                     <input type="text" name="user_cnic[]" id="uCnic" class="form-control cnicMsg uCnic" onblur="appendRow(this);" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask="" value="">
                                     <input type="hidden" name="user_id[]" id="user_id" value="">
                                   </td>
@@ -221,6 +268,9 @@
                                     <input type="text" name="user_name[]" class="form-control user_fullname" value="">
                                   </td>
                                   <td>
+                                    <input type="text" name="user_fname[]" class="form-control user_fname" value="">
+                                  </td>
+                                  <td>
                                     <input type="text" name="user_contact[]" class="form-control user_contact" value="" data-inputmask="&quot;mask&quot;: &quot;9999-9999999&quot;" data-mask="">
                                   </td>
                                   <td>
@@ -229,14 +279,42 @@
                                   <td>
                                     <input type="text" name="ar_date[]" onclick="sdDate()" class="form-control arDate" value="">
                                   </td>
-                                   <td>
-                                    <input type="text" name="address[]" class="form-control user_address" value="">
+                                  <td>
+                                    <input type="date" name="dob[]"  class="form-control " value="">
                                   </td>
+                                  <td>
+                                    <select name="gender[]" class="form-control user_gender" >
+                                      <option value="">-</option>
+                                      <option value="Male">Male</option>
+                                      <option value="Female">Female</option>
+                                      <option value="Other">Other</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <select name="religion[]" class="form-control user_religion" >
+                                      <option value="">-</option>
+                                      <option value="Muslim">Muslim</option>
+                                      <option value="Christian">Christian</option>
+                                      <option value="Jew">Jew</option>
+                                      <option value="Sikh">Sikh</option>
+                                      <option value="Hindu">Other</option>
+                                      <option value="Other">Other</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    <input type="text" name="district[]" class="form-control user_district" value="">
+                                  </td>
+                                  <td>
+                                    <input type="text" name="province[]" class="form-control user_province" value="">
+                                  </td>
+                                  <td>
+                                   <input type="text" name="address[]" class="form-control user_address" value="">
+                                 </td>
                                   <td>
                                     <select name="remarks[]" class="form-control user_remarks" >
                                       <option value="">-</option>
-                                      <option value="ELigible">ELigible</option>
-                                      <option value="Not ELigible">Not ELigible</option>
+                                      <option value="Eligible">Eligible</option>
+                                      <option value="Not Eligible">Not Eligible</option>
                                     </select>
                                   </td>
                                   <td>

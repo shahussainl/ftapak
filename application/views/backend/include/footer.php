@@ -193,55 +193,85 @@ if($this->uri->segment(2)=='AddprjApplicantsList')
     
         var data = '';
         data += `<tr>
-   <td>
-      <label>
-          <input type="checkbox" onclick="checkId()"  class="minimal myCustomCheckBox ch_ID" name="app_id" value="">
-      </label>
-  </td>
-  <td>
-    <input type="text" name="user_cnic[]" id="uCnic" class="form-control cnicMsg uCnic" onblur="appendRow(this);" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask="" value="">
-    <input type="hidden" name="user_id[]" id="user_id" value="">
-
-  </td>
-  <td>
-    <input type="text" name="roll_no[]" class="form-control roll_no" value="" disabled>
-    <input type="hidden" name="roll_no[]" class="form-control roll_no" value="" disabled>
-  </td>
-  
-  <td>
-    <input type="text" name="user_name[]" class="form-control user_fullname" value="">
-  </td>
-  <td>
-    <input type="text" name="user_contact[]" class="form-control user_contact" value="" data-inputmask="&quot;mask&quot;: &quot;9999-9999999&quot;" data-mask="" >
-  </td>
-  <td>
-    <input type="email" name="user_email[]" class="form-control user_email" value="" >
-  </td>
-  <td>
-      <input type="text" name="ar_date[]" onclick="sdDate()" class="form-control arDate" value="">
-  </td>
-   <td>
-    <input type="text" name="address[]" class="form-control user_address" value="">
-  </td>
-  <td>
-    <input type="text" name="attendence[]" class="form-control attendence" value="" disabled>
-    <input type="hidden" name="attendence[]" class="form-control attendence" value="" >
-  </td>
-  <td>
-    <input type="text" name="obt_mark[]" class="form-control obt_mark" value="" disabled>
-    <input type="hidden" name="obt_mark[]" class="form-control obt_mark" value="" >
-  </td>
-   <td>
-    <input type="text" name="ttl_mark[]" class="form-control ttl_mark" value="<?php if(!empty($prj_t_marks)){ echo $prj_t_marks; }?>" disabled>
-    <input type="hidden" name="ttl_mark[]" class="form-control ttl_mark" value="<?php if(!empty($prj_t_marks)){ echo $prj_t_marks; }?>" >
-  </td>
-   <td>
-     <a href="javascript:;" onclick="removeRow(this);" class="btn delete" data-row="1">
-        <span class="input-group-addon"><i class="fa fa-trash"></i></span>
-    </a>
-</td>
-</tr>
-                </tr>`;
+                  <td>
+                    <label>
+                        <input type="checkbox" onclick="checkId()"  class="minimal myCustomCheckBox ch_ID" name="app_id" value="">
+                    </label>
+                </td>
+                <td>
+                  <input type="text" name="user_cnic[]" id="uCnic" class="form-control cnicMsg uCnic" onblur="appendRow(this);" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask="" value="">
+                  <input type="hidden" name="user_id[]" id="user_id" value="">
+                </td>
+                <td>
+                  <input type="text" name="roll_no[]" class="form-control roll_no" value="" >
+                    <input type="hidden" name="roll_no[]" class="form-control roll_no" value="">
+                </td>
+                <td>
+                  <input type="text" name="user_name[]" class="form-control user_fullname" value="">
+                </td>
+                <td>
+                  <input type="text" name="user_fname[]" class="form-control user_fname" value="">
+                </td>
+                <td>
+                  <input type="text" name="user_contact[]" class="form-control user_contact" value="" data-inputmask="&quot;mask&quot;: &quot;9999-9999999&quot;" data-mask="">
+                </td>
+                <td>
+                  <input type="email" name="user_email[]" class="form-control user_email" value="" >
+                </td>
+                <td>
+                  <input type="text" name="ar_date[]" onclick="sdDate()" class="form-control arDate" value="">
+                </td>
+                <td>
+                  <input type="date" name="dob[]"  class="form-control " value="">
+                </td>
+                <td>
+                  <select name="gender[]" class="form-control user_gender" >
+                    <option value="">-</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="religion[]" class="form-control user_religion" >
+                    <option value="">-</option>
+                    <option value="Muslim">Muslim</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Jew">Jew</option>
+                    <option value="Sikh">Sikh</option>
+                    <option value="Hindu">Other</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" name="district[]" class="form-control user_district" value="">
+                </td>
+                <td>
+                  <input type="text" name="province[]" class="form-control user_province" value="">
+                </td>
+                <td>
+                  <input type="text" name="address[]" class="form-control user_address" value="">
+                </td>
+                <td>
+                  <select name="remarks[]" class="form-control user_remarks" >
+                    <option value="">-</option>
+                    <option value="Eligible">Eligible</option>
+                    <option value="Not Eligible">Not Eligible</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" name="attendence[]" class="form-control attendence" value="" disabled>
+                    <input type="hidden" name="attendence[]" class="form-control attendence" value="">
+                </td>
+                <td>
+                  <input type="text" name="obt_mark[]" class="form-control obt_mark" value="" disabled>
+                    <input type="hidden" name="obt_mark[]" class="form-control obt_mark" value="" >
+                </td>
+                  <td>
+                  <input type="text" name="ttl_mark[]" class="form-control ttl_mark" value="<?php if(!empty($prj_t_marks)){ echo $prj_t_marks; }?>" >
+                    <input type="hidden" name="ttl_mark[]" class="form-control ttl_mark" value="<?php if(!empty($prj_t_marks)){ echo $prj_t_marks; }?>" >
+                </td>
+              </tr>`;
       
       // console.log(data);
                  findCnicRec(obj);
@@ -251,8 +281,8 @@ if($this->uri->segment(2)=='AddprjApplicantsList')
             $('#a').append(data);
         }
         $('.datepicker').datepicker({
-                autoclose: true,
-                startDate: new Date()
+                // autoclose: true,
+                // startDate: new Date()
               });
         // $(".artoday").datepicker("setDate", new Date());
         $('[data-mask]').inputmask();
