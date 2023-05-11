@@ -100,14 +100,14 @@
 									<div class="testimonial-pic radius" style="width: 150px !important;">
 										<!-- <img src="<php echo base_url('front_asset/images/testimonials/pic3.jpg');?>" alt="" width="100" height="100"></div> -->
 									<div class="testimonial-text" style="width: 250px !important;">
-									<marquee behavior="scroll" direction="up" scrollamount="2" height="200px">
+									<marquee behavior="scroll" direction="up" scrollamount="2" height="200px" onmouseover="this.stop()" onmouseout="this.start()">
 										<?php 
 											if(!empty($recentNews))
 											{
 												foreach($recentNews as $news)
 												{
 										?>
-													<li><a href="<?= base_url('Pages/newsFeedDetail/'.$news['n_u_id']);?>"><?= $news['n_u_title']; ?></a></li>
+													<a href="<?= base_url('Pages/newsFeedDetail/'.$news['n_u_id']);?>"><?= $news['n_u_title']; ?></a>
 										<?php
 												}
 											}
