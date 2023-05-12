@@ -198,7 +198,7 @@ if($this->uri->segment(2)=='AddprjApplicantsList')
                         <input type="checkbox" onclick="checkId()"  class="minimal myCustomCheckBox ch_ID" name="app_id" value="">
                     </label>
                 </td>
-                <td>
+                <td style="width: 100px !important;">
                   <input type="text" name="user_cnic[]" id="uCnic" class="form-control cnicMsg uCnic" onblur="appendRow(this);" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask="" value="">
                   <input type="hidden" name="user_id[]" id="user_id" value="">
                 </td>
@@ -253,10 +253,21 @@ if($this->uri->segment(2)=='AddprjApplicantsList')
                   <input type="text" name="address[]" class="form-control user_address" value="">
                 </td>
                 <td>
+                  <input type="text" name="last_degree[]" class="form-control user_lastdegree" value="">
+                </td>
+                <td>
+                  <select name="disability[]" class="form-control user_disability" >
+                    <option value="">-</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </td>
+                
+                <td>
                   <select name="remarks[]" class="form-control user_remarks" >
                     <option value="">-</option>
                     <option value="Eligible">Eligible</option>
-                    <option value="Not Eligible">Not Eligible</option>
+                    <option value="Rejected">Rejected</option>
                   </select>
                 </td>
                 <td>

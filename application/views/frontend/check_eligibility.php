@@ -7,7 +7,7 @@
                 <div class="dez-bnr-inr-entry align-m text-white">
 					<div class=" job-search-form">
 						<h2 class="text-center">Enter your CNIC number to find Eligibility</h2>
-						<h3>Find your test Eligibility</h3>
+						<h3>Find your test eligibility</h3>
 						<form method="post" action="<?= base_url('Job/show_cnic_eligibility'); ?>">
 							<div class="input-group">
 								<input type="text" name="cnic_slip" class="form-control" placeholder="i.e 11xxx-xxxxxxx-x" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask="" >

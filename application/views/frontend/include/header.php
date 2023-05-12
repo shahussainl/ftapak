@@ -40,15 +40,15 @@
 								<a href="<?php echo base_url('Pages/all_jobs');?>">Jobs <i class=""></i></a>
 							</li> -->
 
-							<li class="<?php if($ci=='Job' && $mtd=='check_eligibility'){ echo 'active'; } ?>">
-								<a href="<?php echo base_url('Job/check_eligibility');?>">List of Candidate <i class=""></i></a>
+							<li class="<?php if($ci=='Job' && $this->uri->segment(3)=='candidate'){ echo 'active'; } ?>">
+								<a href="<?php echo base_url('Job/list/candidate');?>">List of Candidate <i class=""></i></a>
 							</li>
 
-							<li class="<?php if($ci=='Job' && $mtd=='check_rollno_slip'){ echo 'active'; } ?>">
-								<a href="<?php echo base_url('Job/check_rollno_slip');?>">Roll No <i class=""></i></a>
+							<li class="<?php if($ci=='Job' && $this->uri->segment(3)=='rollno'){ echo 'active'; } ?>">
+								<a href="<?php echo base_url('Job/list/rollno');?>">Roll No <i class=""></i></a>
 							</li>
-						    <li class="<?php if($ci=='Job' && $mtd=='test_result'){ echo 'active'; } ?>">
-								<a href="<?php echo base_url('Job/test_result');?>">Results <i class=""></i></a>
+						    <li class="<?php if($ci=='Job' && $this->uri->segment(3)=='result'){ echo 'active'; } ?>">
+								<a href="<?php echo base_url('Job/list/result');?>">Results <i class=""></i></a>
 							</li>
 						
 							<!-- <li class="<?php if($ci=='Pages' && $mtd=='newsFeed'|| $mtd=='newsFeedDetail'){ echo 'active'; } ?>">

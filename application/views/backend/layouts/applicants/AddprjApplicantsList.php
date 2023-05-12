@@ -154,6 +154,8 @@
                                     <th>DISTRICT</th>
                                     <th>PROVINCE</th>
                                     <th>ADDRESS</th>
+                                    <th>LAST DEGREE</th>
+                                    <th>DISABILITY</th>
                                     <th>REMARKS</th>
                                     <th>ATTENDENCE</th>
                                     <th>OBT MARKS</th>
@@ -224,6 +226,16 @@
                                   </td>
                                    <td>
                                     <input type="text" name="address[]" class="form-control user_address" value="<?php if(!empty($list->address)){ echo $list->address; }?>">
+                                  </td>
+                                  <td>
+                                   <input type="text" name="last_degree[]" class="form-control user_last_degree" value="<?php if(!empty($list->last_degree)){ echo $list->last_degree; }?>">
+                                 </td>
+                                 <td>
+                                    <select name="disability[]" class="form-control user_disability" >
+                                      <option value="">-</option>
+                                      <option <?php if(!empty($list->disability=='Yes')){ echo 'selected'; }?> value="Yes">Yes</option>
+                                      <option <?php if(!empty($list->disability=='No')){ echo 'selected'; }?> value="No">No</option>
+                                    </select>
                                   </td>
                                   <td>
                                     <select name="remarks[]" class="form-control user_remarks" >
@@ -310,11 +322,22 @@
                                   <td>
                                    <input type="text" name="address[]" class="form-control user_address" value="">
                                  </td>
+                                 <td>
+                                   <input type="text" name="last_degree[]" class="form-control user_lastdegree" value="">
+                                 </td>
+                                 <td>
+                                    <select name="disability[]" class="form-control user_disability" >
+                                      <option value="">-</option>
+                                      <option value="Yes">Yes</option>
+                                      <option value="No">No</option>
+                                    </select>
+                                  </td>
+                                  
                                   <td>
                                     <select name="remarks[]" class="form-control user_remarks" >
                                       <option value="">-</option>
                                       <option value="Eligible">Eligible</option>
-                                      <option value="Not Eligible">Not Eligible</option>
+                                      <option value="Rejected">Rejected</option>
                                     </select>
                                   </td>
                                   <td>

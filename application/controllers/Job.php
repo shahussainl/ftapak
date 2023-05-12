@@ -66,6 +66,16 @@ $result['recentNews']=$this->Pages_m->getRecentNews();
        	  $this->load->view('frontend/index2');
        	  $this->load->view('frontend/include/footer');
        }
+       public function list($liststr)
+       {
+         $result['list']    = $this->Job_m->findlist($liststr);
+         $result['liststr'] = $liststr;
+         // echo "<pre>"; print_r($result['list']); die();
+         $this->load->view('frontend/include/head');
+         $this->load->view('frontend/include/header');
+         $this->load->view('frontend/list',$result);
+         $this->load->view('frontend/include/footer');
+       }
        public function check_rollno_slip()
        {
           $this->load->view('frontend/include/head');
@@ -80,7 +90,7 @@ $result['recentNews']=$this->Pages_m->getRecentNews();
           $this->load->view('frontend/check_eligibility');
           $this->load->view('frontend/include/footer');
        }
-       public function test_result()
+       public function check_result()
        {
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');

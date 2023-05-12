@@ -16,6 +16,31 @@
        $query = $this->db->get();
        return $query->result_array();
   	}
+    public function findlist($list_opt)
+  	{
+       $this->db->select('projects.*');
+       $this->db->from('projects');
+       if($list_opt=='result')
+       {
+        $this->db->join('result','result.prj_id=projects.prj_id');
+       }
+       else if($list_opt=='rollno')
+       {
+        $this->db->join('rollno','rollno.prj_id=projects.prj_id');
+       }
+       else
+       {
+        $this->db->where('applicants.remarks !=','');
+         $this->db->join('applicants','applicants.prj_id=projects.prj_id');
+       }
+      //  $this->db->join('organization as org','org.org_id=pro.org_id');
+      //  $this->db->join('org_addresses as add','org.org_id=add.org_id');
+       $this->db->limit(20);
+       $this->db->order_by('projects.prj_id','DESC');
+       $this->db->group_by('projects.prj_id');
+       $query = $this->db->get();
+       return $query->result();
+  	}
   	public function getJobDetail($id)
   	{
        return $this->db->select('*')

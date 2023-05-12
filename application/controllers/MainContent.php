@@ -856,6 +856,8 @@ $this->session->set_flashdata('success','Applicants Record added successfully');
           $district     = $this->input->post('district');
           $province     = $this->input->post('province');
           $address      = $this->input->post('address');
+          $last_degree  = $this->input->post('last_degree');
+          $disability   = $this->input->post('disability');
           if(!empty($userCnic))
           {
             // $this->API_m->delete('applicants',['prj_id'=>$prj_id]);
@@ -880,6 +882,8 @@ $this->session->set_flashdata('success','Applicants Record added successfully');
                          'district'          => $district[$i], 
                          'province'          => $province[$i], 
                          'user_address'      => $userAddr[$i],
+                         'last_degree'       => $last_degree[$i],
+                         'disability'        => $disability[$i],
                          'role_id'           => $role_id,
                          'user_created_date' => date('Y-m-d'),
                          'user_created_by'   => $this->session->userdata('user')['user_id']
