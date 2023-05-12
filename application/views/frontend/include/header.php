@@ -40,14 +40,14 @@
 								<a href="<?php echo base_url('Pages/all_jobs');?>">Jobs <i class=""></i></a>
 							</li> -->
 
-							<li class="<?php if($ci=='Job' && $this->uri->segment(3)=='candidate'){ echo 'active'; } ?>">
+							<li class="<?php if($ci=='Job' && ($this->uri->segment(3)=='candidate' || $mtd=='check_eligibility' )){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Job/list/candidate');?>">List of Candidate <i class=""></i></a>
 							</li>
 
-							<li class="<?php if($ci=='Job' && $this->uri->segment(3)=='rollno'){ echo 'active'; } ?>">
+							<li class="<?php if($ci=='Job' && ($this->uri->segment(3)=='rollno' || $mtd=='check_rollno_slip' )){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Job/list/rollno');?>">Roll No <i class=""></i></a>
 							</li>
-						    <li class="<?php if($ci=='Job' && $this->uri->segment(3)=='result'){ echo 'active'; } ?>">
+						    <li class="<?php if($ci=='Job' && ($this->uri->segment(3)=='result'  || $mtd=='check_result' )){ echo 'active'; } ?>">
 								<a href="<?php echo base_url('Job/list/result');?>">Results <i class=""></i></a>
 							</li>
 						
