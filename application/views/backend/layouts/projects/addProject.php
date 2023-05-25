@@ -16,7 +16,7 @@
     <!-- Main content -->
     <section class="content">
     
-        <a href="<?php echo base_url('MainContent/projectList_View');?>" class="btn btn-sm btn-success">Project List</a>
+        <a href="<?php echo base_url('MainContent/projectList_View');?>" class="btn btn-sm btn-success">Post List</a>
       <div class="row">
          <div class="col-sm-12">
                <?php $this->load->view('backend/layouts/flashMsg/flashMsg'); ?>
@@ -54,11 +54,11 @@
                          <div class="box-body">
                              <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="exampleInputEmail1">Project Title</label>
+                                  <label for="exampleInputEmail1"> Title</label>
                                    <input type="text" name="title" class="form-control" autocomplete="off" required="required">
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="exampleInputEmail1">Org Name</label>
+                                  <label for="exampleInputEmail1">Project Name</label>
                                    <select name="org_id" class="form-control select2" required>
                                     <option value="">-select-</option>
                                     <?php

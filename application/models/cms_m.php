@@ -7,7 +7,8 @@ class Cms_m extends CI_Model
 {
 	public function dynamicInsertTable($orgData,$tableName)
 	{
-		return $this->db->insert($tableName,$orgData);
+		 $this->db->insert($tableName,$orgData);
+           return $this->db->insert_id();
 	}
 	public function dynamicGetTable($tableName)
 	{
@@ -33,11 +34,22 @@ class Cms_m extends CI_Model
    	     return $this->db->update($tableName,$orgUpdateData);
    	  
     }
+    public function getImageForUpdate($id)
+    {
+            $this->db->where('orgp_id',$id);
+            $q = $this->db->get('orgp_img');
+            return $q->result_array();
+    }
     public function addOrgDataM($orgData,$tableName)
     {
        $this->db->insert($tableName,$orgData);
        return $this->db->insert_id();
     }
+    public function multiple_images_update($image = array())
+   {
+        $this->load->database();  
+        return $this->db->insert_batch('orgp_img',$image);       
+   }
     public function getOrgUpdateData($id)
     {
        $this->db->select('*');
@@ -136,8 +148,23 @@ class Cms_m extends CI_Model
           $this->db->or_where('user_cnic',$arr['user_cnic']);
           return $this->db->get()->result();
      }
-
-
+     public function multiple_images($image = array())
+     {
+          $this->load->database();
+          return $this->db->insert_batch('orgp_img',$image);
+          
+     }
+     public function deleteProjectM($id)
+     {
+           $this->load->database();
+          //  $this->db->delete('projects', array('prj_id' => $id)); 
+           return $this->db->delete('orgp_img', array('orgp_id' => $id));          
+     }
+     public function singleImgaeDaletModel($id)
+     {
+            $this->db->where('img_id',$id);
+           return  $this->db->delete('orgp_img');
+     }
 
 
 }

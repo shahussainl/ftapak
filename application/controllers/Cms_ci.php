@@ -34,7 +34,7 @@ class Cms_ci extends CI_Controller
            $this->load->view('backend/include/head');
            $this->load->view('backend/include/header');
            $this->load->view('backend/include/sideBar');
-           $this->load->view('backend/layouts/org/addOrg.php');
+           $this->load->view('backend/layouts/org/addOrg');
            $this->load->view('backend/include/footer');
         }
 
@@ -42,7 +42,8 @@ class Cms_ci extends CI_Controller
         {
              $idd=['org.org_id'=>$id];
              $tableName="organization";
-            $result['updateData']=$this->cms_m->getOrgUpdateData($idd);
+            $result['imagedata']  = $this->cms_m->getImageForUpdate($id);
+            $result['updateData'] = $this->cms_m->getOrgUpdateData($idd);
             // print_r($resullt);
             // exit(); 
            $this->load->view('backend/include/head');
@@ -51,9 +52,17 @@ class Cms_ci extends CI_Controller
            $this->load->view('backend/layouts/org/orgUpdateView',$result);
            $this->load->view('backend/include/footer');
         }
+        public function singleImgaeDalet($id)
+        {
+            $re = $this->cms_m->singleImgaeDaletModel($id);
 
+        }
         public function addOrgData()
         {
+          // echo "<pre>"; 
+          // print_r($_POST);
+          // print_r($_FILES);
+          // die();
           $org_name = $this->input->post('org_name');
           $org_email = $this->input->post('email');
           $org_contact = $this->input->post('contact');
@@ -65,7 +74,7 @@ class Cms_ci extends CI_Controller
           $org_state = $this->input->post('state');
           $org_contry = $this->input->post('country');
           $org_postCode = $this->input->post('postCode');
-
+          $editor1        = $this->input->post('editor1');
           $tableName="organization";
           $tblAddress="org_addresses";
           $city =  ucfirst($org_city);
@@ -92,33 +101,79 @@ class Cms_ci extends CI_Controller
             {
               $image = " ";
             }       
-                       $orgData = array(
-                          'org_name'      =>$org_name ,
-                          'org_contact'   =>$org_contact ,
-                          'org_email'     =>$org_email ,
-                          'org_fax'       =>$org_fax ,
-                          'org_address'   =>$org_address ,
-                          'org_type'      =>$org_type , 
-                          'org_logo'      =>$image ,
-                          'org_created_by' =>$this->session->userdata('user')['user_id'], 
-                          );
+            $orgData = array(
+              'org_name'      =>$org_name ,
+              'org_contact'   =>$org_contact ,
+              'org_email'     =>$org_email ,
+              'org_fax'       =>$org_fax ,
+              'org_address'   =>$org_address ,
+              'org_type'      =>$org_type , 
+              'org_logo'      =>$image ,
+              'org_desc'      =>$editor1,
+              'org_created_by' =>$this->session->userdata('user')['user_id'], 
+              );
 
-                        $org_idd = $this->cms_m->addOrgDataM($orgData,$tableName);
-                        // print_r($re);
-                        // exit();
-                        
-                                   $orgAddress = array(
-                                         'address1'      =>$org_address ,
-                                         'postcode'   =>$org_postCode ,
-                                         'city'     =>$city ,
-                                         'state'       =>$org_state ,
-                                         'country'       =>$org_contry ,
-                                         'org_id'       =>$org_idd ,
-                                         
-                                         );
+            $org_idd = $this->cms_m->addOrgDataM($orgData,$tableName);
+            $orgAddress = array(
+                'address1'      =>$org_address ,
+                'postcode'   =>$org_postCode ,
+                'city'     =>$city ,
+                'state'       =>$org_state ,
+                'country'       =>$org_contry ,
+                'org_id'       =>$org_idd ,
+                
+                );
+          $re_id = $this->cms_m->dynamicInsertTable($orgAddress,$tblAddress);
+          if(!$re_id)
+          {
+             echo "Not return";
+          }
+          else
+          {
+             $img_titlee = $this->input->post('img_title');
+             $image = array();
+             $ImageCount = count($_FILES['image_name']['name']);
+                 for($i = 0; $i < $ImageCount; $i++)
+                 {
+                     $_FILES['file']['name']       = $_FILES['image_name']['name'][$i];
+                     $_FILES['file']['type']       = $_FILES['image_name']['type'][$i];
+                     $_FILES['file']['tmp_name']   = $_FILES['image_name']['tmp_name'][$i];
+                     $_FILES['file']['error']      = $_FILES['image_name']['error'][$i];
+                     $_FILES['file']['size']       = $_FILES['image_name']['size'][$i];
 
-                                $re = $this->cms_m->dynamicInsertTable($orgAddress,$tblAddress);
+                     // File upload configuration
+                     $uploadPath = realpath(APPPATH."../uploads/");
 
+                     $config['upload_path'] = $uploadPath;
+                     $config['allowed_types'] = 'jpg|jpeg|png|gif|txt|xls|xlsx|doc|docx|pdf';
+                     // $config['max_size'] = '100';
+                     // $config['max_width'] = '1024';
+                     // $config['max_height'] = '768';
+
+
+                     // Load and initialize upload library
+                     $this->load->library('upload', $config);
+                     $this->upload->initialize($config);
+
+                     // Upload file to server
+                     if($this->upload->do_upload('file'))
+                       {
+                          // Uploaded file data
+                          $imageData = $this->upload->data();
+                          $uploadImgData[$i]['orgp_file']  = $imageData['file_name']; 
+                          $uploadImgData[$i]['orgp_id']    = $re_id;
+                          $uploadImgData[$i]['img_title']  = $img_titlee[$i];
+
+                       }
+                 }
+                 if(!empty($uploadImgData))
+                  {
+                    // Insert files data into the database
+                      $re =  $this->cms_m->multiple_images($uploadImgData);            
+                  }
+                  
+                  
+              }
                                 // Notification area
                                   $activity = [
                                     'notify_operation'   => 'add_Org_data', //crud name
@@ -162,17 +217,16 @@ class Cms_ci extends CI_Controller
               $org_fax = $this->input->post('fax');
               $org_type = $this->input->post('org_type');
               $org_address = $this->input->post('address');
-
-
               $org_city = $this->input->post('city');
               $org_state = $this->input->post('state');
               $org_contry = $this->input->post('contry');
               $org_postCode = $this->input->post('postCode');
-
-              $city =  ucfirst($org_city);
-               $u_id = ['org_id'=>$org_idd];
-               $tableName="organization";
-               $tblAddress="org_addresses";
+              $editor1 = $this->input->post('editor1');
+              $uploadImgData = [];
+            $city =  ucfirst($org_city);
+            $u_id = ['org_id'=>$org_idd];
+            $tableName="organization";
+            $tblAddress="org_addresses";
           
             $img = $_FILES['photo']['name'];
            $image = '';
@@ -204,7 +258,8 @@ class Cms_ci extends CI_Controller
                                   'org_email'     =>$org_email ,
                                   'org_fax'       =>$org_fax ,
                                   'org_address'   =>$org_address ,
-                                  'org_type'      =>$org_type  
+                                  'org_type'      =>$org_type,
+                                  'org_desc'      =>$editor1,
                              );
                      $orgAddressData = array(
                                          'address1'   =>$org_address ,
@@ -217,6 +272,48 @@ class Cms_ci extends CI_Controller
                       $this->cms_m->dynamicUpdate($u_id,$orgAddressData,$tblAddress);
                       $this->cms_m->dynamicUpdate($u_id,$orgUpdateData,$tableName);
 
+
+                      $img_titlee = $this->input->post('img_title');
+                  $image = array();
+                  $ImageCount = count($_FILES['image_name']['name']);
+                  for($i = 0; $i < $ImageCount; $i++)
+                  {
+                      $_FILES['file']['name']       = $_FILES['image_name']['name'][$i];
+                      $_FILES['file']['type']       = $_FILES['image_name']['type'][$i];
+                      $_FILES['file']['tmp_name']   = $_FILES['image_name']['tmp_name'][$i];
+                      $_FILES['file']['error']      = $_FILES['image_name']['error'][$i];
+                      $_FILES['file']['size']       = $_FILES['image_name']['size'][$i];
+
+                      // File upload configuration
+                      $uploadPath = realpath(APPPATH."../uploads/");
+
+                      $config['upload_path'] = $uploadPath;
+                      $config['allowed_types'] = 'jpg|jpeg|png|gif|txt|xls|xlsx|doc|docx|pdf';
+
+                      // Load and initialize upload library
+                      $this->load->library('upload', $config);
+                      $this->upload->initialize($config);
+
+                      // Upload file to server
+                      if($this->upload->do_upload('file'))
+                        {
+                           // Uploaded file data
+                           $imageData = $this->upload->data();
+                           $uploadImgData[$i]['orgp_file'] = $imageData['file_name']; 
+                           $uploadImgData[$i]['orgp_id']    = $org_idd;
+                           $uploadImgData[$i]['img_title']  = $img_titlee[$i];
+
+                        }
+                  }
+                  if(!empty($uploadImgData))
+                   {
+                     // Insert files data into the database
+                     $re =  $this->cms_m->multiple_images_update($uploadImgData);
+                     if(!$re)
+                     {
+                        echo "Not inserted";
+                     }
+                  }
                           // Notification area
                             $activity = [
                               'notify_operation'   => 'update_Org_Data', //crud name

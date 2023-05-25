@@ -70,7 +70,7 @@ $mtd = $this->uri->segment(2);
         </li>
         <li class="<?php if($mtd=='orgListView'){ echo 'active'; } ?>">
           <a href="<?php echo base_url('cms_ci/orgListView'); ?>">
-            <i class="fa fa-calendar"></i> <span>Organization List</span>
+            <i class="fa fa-calendar"></i> <span>Project List</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red"><?= $totalOrg; ?></small>
               
@@ -79,7 +79,7 @@ $mtd = $this->uri->segment(2);
         </li>
         <li class="treeview <?php if($ci=='MainContent' && $mtd=='projectAddView' || $mtd=='projectList_View' || $mtd=='updateProjectView' || $mtd=='projectDetail_View'){ echo 'active'; } ?>">
           <a href="<?php echo base_url('MainContent/projectAddView'); ?>">
-            <i class="fa fa-dashboard"></i> <span>Projects</span>
+            <i class="fa fa-dashboard"></i> <span>Posts</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -88,13 +88,13 @@ $mtd = $this->uri->segment(2);
           <ul class="treeview-menu">
                <li class="<?php if($mtd=='projectAddView'){ echo 'active'; } ?>" >
                   <a href="<?php echo base_url('MainContent/projectAddView'); ?>">
-                    <i class="fa fa-calendar"></i> <span>Projects Add</span>
+                    <i class="fa fa-calendar"></i> <span>Posts Add</span>
                   </a>
                 </li>
 
                 <li  class="<?php if($mtd=='projectList_View' || $mtd=='updateProjectView'){ echo 'active'; } ?>">
                   <a href="<?php echo base_url('MainContent/projectList_View'); ?>">
-                    <i class="fa fa-calendar"></i> <span>Projects List</span>
+                    <i class="fa fa-calendar"></i> <span>Posts List</span>
                     <span class="pull-right-container">
                       <small class="label pull-right bg-red"><?= $totalPrj; ?> </small>
                       

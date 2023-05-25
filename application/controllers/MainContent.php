@@ -225,9 +225,9 @@
 
              
    
-             $img_titlee = $this->input->post('img_title');
-              $image = array();
-              $ImageCount = count($_FILES['image_name']['name']);
+                  $img_titlee = $this->input->post('img_title');
+                  $image = array();
+                  $ImageCount = count($_FILES['image_name']['name']);
                   for($i = 0; $i < $ImageCount; $i++)
                   {
                       $_FILES['file']['name']       = $_FILES['image_name']['name'][$i];
@@ -265,15 +265,7 @@
                      {
                         echo "Not inserted";
                      }
-                     // else
-                     // {
-                     // $this->session->set_flashdata('success','Record updated successfully');
-                     //  redirect('MainContent/updateProjectView/'.$u_idd); 
-                     // }            
-                
-                   
-                   
-                 }
+                  }
                     // Notification area
                           $activity = [
                              'notify_operation'   => 'update_Project_Data', //crud name

@@ -16,7 +16,7 @@
     <!-- Main content -->
     <section class="content">
      
-      <a href="<?php echo base_url('cms_ci/orgListView');?>" class="btn btn-sm btn-success">View Organization List</a>
+      <a href="<?php echo base_url('cms_ci/orgListView');?>" class="btn btn-sm btn-success">View List</a>
       <div class="row">
          <div class="col-sm-12">
                <?php $this->load->view('backend/layouts/flashMsg/flashMsg'); ?>
@@ -24,7 +24,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Add New Organization</h3>
+              <h3 class="box-title">Add New Project</h3>
 
              <!--  <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -55,7 +55,7 @@
                              
                               <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="inputEmail4">Organization Name</label>
+                                  <label for="inputEmail4"> Name</label>
                                   <input type="text" name="org_name" class="form-control"  id="inputEmail4"autocomplete="off" required="required">
                                 </div>
                                 <div class="form-group col-md-6">
@@ -77,7 +77,7 @@
 
                               <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="inputPassword4">Organization Type</label>
+                                  <label for="inputPassword4">Project bType</label>
                                     <select name="org_type" class="form-control" required="required">
                                         <option value="">--select--</option>
                                         <option value="Goverment">Goverment</option> 
@@ -113,13 +113,31 @@
                                   <input type="text" name="postCode" class="form-control" id="inputPassword4" autocomplete="off" required >
                                 </div>
                               </div>
-
-                                <div class="form-row">
-                                   <div class="form-group col-md-12">
-                                        <label>Organization Logo </label>
-                                        <input type="file"  name="photo" id="my_image_name"  class="form-control" />
-                                  </div> 
+                              <div class="form-row">
+                                <div class="form-group col-md-12">
+                                  <label for="exampleInputEmail1">Short Description</label>
+                                   <!-- <input type="text" name="desc" class="form-control" autocomplete="off" required="required"> -->
+                                    <textarea name="editor1" class="form-control" rows="5" autocomplete="off" required></textarea>
+                                </div>
+                              </div>
+                              <div class="form-row">
+                                <div class="form-group col-md-12">
+                                  <label>Organization Logo </label>
+                                  <input type="file"  name="photo" id="my_image_name"  class="form-control" />
+                                </div> 
                               </div> 
+                              <div class="form-row">
+                                  <div class="form-group col-md-12" id="upload-form">
+                                        <label>Upload Image</label>
+
+                                        <input type="file" name="image_name[]" onchange="myFunction(this);previewImages(this)" id="my_image_name"  class="form-control file-input"   multiple="multiple"/>
+                                  </div> 
+                              </div>
+                              <div class="row">
+                                         <span id="preview-area">
+                                   </div>   
+               
+                              </div>
 
                               
                                 <div class="form-group">
@@ -152,3 +170,33 @@
   
 
 
+
+
+  <script type="text/javascript">
+  // var inputLocalFont = document.getElementById("my_image_name");
+  // inputLocalFont.addEventListener("change", previewImages, false); //bind the function to the input
+  function previewImages(obj) 
+  {
+      var fileList = obj.files;
+      var anyWindow = window.URL || window.webkitURL;
+      for (var i = 0; i < fileList.length; i++) {
+          //get a blob to play with
+          var objectUrl = anyWindow.createObjectURL(fileList[i]);
+          // for the next line to work, you need something class="preview-area" in your html
+            // $('#preview-area').empty();
+          
+
+          $('#preview-area').append('<div class="col-md-3"><img class="card-img-top" src="' + objectUrl + '" style="height:200px;  width:100%;" /><br><input type="text" name="img_title[]" placeholder="    enter Title" style="height:30px;  width:100%;"></div>');
+          // get rid of the blob
+          window.URL.revokeObjectURL(fileList[i]);
+      }
+  }
+
+     function myFunction(obj) 
+   {
+       // alert('fun');
+      $(obj).hide();
+      $(obj).removeAttr('id');
+      $("#upload-form").append("<input class='form-control file-input' type='file' onchange='myFunction(this);previewImages(this);' name='image_name[]' id='my_image_name' multiple='multiple' />");
+    }
+</script>

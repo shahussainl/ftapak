@@ -23,7 +23,7 @@
     <!-- Main content -->
     <section class="content">
     
-<a href="<?php echo base_url('MainContent/projectList_View');?>" class="btn btn-sm btn-success">Project List</a>
+<a href="<?php echo base_url('MainContent/projectList_View');?>" class="btn btn-sm btn-success">Post List</a>
       <div class="row">
          <div class="col-sm-12">
                <?php $this->load->view('backend/layouts/flashMsg/flashMsg'); ?>
@@ -50,7 +50,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                  <label for="exampleInputEmail1" >Organization Name</label>
+                                  <label for="exampleInputEmail1" >Project Name</label>
                                    <select name="org_id" class="form-control" >
                                       <?php
                                          foreach ($projectList as $key => $row) 
@@ -113,47 +113,44 @@
                               </div>   
                                      
                                     <div class="row"> 
-                                  <div class="form-group col-md-12">
-                                      
-                                         <?php 
-                                              foreach ($imagedata as $key => $row) 
-                                              {
-                                                $i = explode('.', $row['prj_file']);
-                                                // print_r($i);
-                                                if($i[1]=='pdf')
-                                                {
-                                            ?>
-                                         <div class="col-md-3">
-                                          <a href="<?= base_url('/uploads/'.$row['prj_file']);?>"  target="_blank">
-                                                 <img  src="<?= base_url('/uploads/icon/pdf-icon.jpg');?>" style="height: 200px;width: 100%;" id="imgIdd">
-                                                 <p class="image-text"><?php echo $row['img_title'];?></p>
-                                           </a>  
-                                                 <a href="<?php echo base_url('MainContent/singleImgaeDalet/'.$row['img_id']);?>" class="btn btn-sm btn-danger deleteImg">trash</a></p>
-                                             
-                                         </div>
-                                         <?php 
-                                              }
-                                              else
-                                              {
-                                          ?>
-                                           <div class="col-md-3">
-                                                <a href="<?php echo base_url('./uploads/'.$row['prj_file']);?>" target="_blank">
-                                                  <img  src="<?php echo base_url('./uploads/'.$row['prj_file']);?>" style="height: 200px;width: 100%;" id="imgIdd">
-                                                  <p class="image-text"><?php echo $row['img_title'];?></p>
-                                                </a>
-                                                 <a href="<?php echo base_url('MainContent/singleImgaeDalet/'.$row['img_id']);?>" class="btn btn-sm btn-danger deleteImg">trash</a></p>
-                                             
-                                         </div>
-                                          <?php
-                                              }    
-                                               }
-                                             ?> 
-                                       </div>
+                                        <div class="form-group col-md-12">
+                                              <?php 
+                                                    foreach ($imagedata as $key => $row) 
+                                                    {
+                                                      $i = explode('.', $row['prj_file']);
+                                                      // print_r($i);
+                                                      if($i[1]=='pdf')
+                                                      {
+                                                  ?>
+                                              <div class="col-md-3">
+                                                <a href="<?= base_url('/uploads/'.$row['prj_file']);?>"  target="_blank">
+                                                      <img  src="<?= base_url('/uploads/icon/pdf-icon.jpg');?>" style="height: 200px;width: 100%;" id="imgIdd">
+                                                      <p class="image-text"><?php echo $row['img_title'];?></p>
+                                                </a>  
+                                                      <a href="<?php echo base_url('MainContent/singleImgaeDalet/'.$row['img_id']);?>" class="btn btn-sm btn-danger deleteImg">trash</a></p>
+                                              </div>
+                                              <?php 
+                                                    }
+                                                    else
+                                                    {
+                                                ?>
+                                                <div class="col-md-3">
+                                                      <a href="<?php echo base_url('./uploads/'.$row['prj_file']);?>" target="_blank">
+                                                        <img  src="<?php echo base_url('./uploads/'.$row['prj_file']);?>" style="height: 200px;width: 100%;" id="imgIdd">
+                                                        <p class="image-text"><?php echo $row['img_title'];?></p>
+                                                      </a>
+                                                      <a href="<?php echo base_url('MainContent/singleImgaeDalet/'.$row['img_id']);?>" class="btn btn-sm btn-danger deleteImg">trash</a></p>
+                                              </div>
+                                                <?php
+                                                    }    
+                                                    }
+                                                  ?> 
+                                            </div>
 
-                                       <div class="row">
-                                         <span id="preview-area">
-                                       </div>
-                                 </div>
+                                            <div class="row">
+                                              <span id="preview-area">
+                                            </div>
+                                      </div>
                
                             </div>
               

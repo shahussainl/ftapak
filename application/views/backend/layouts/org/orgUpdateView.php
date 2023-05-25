@@ -49,7 +49,7 @@
                               <input type="hidden" name="old_image" value="<?= $updateData['org_logo']  ?>">
                               <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="inputEmail4">Organization Name</label>
+                                  <label for="inputEmail4"> Name</label>
                                   <input type="text" name="org_name" class="form-control" value="<?php echo $updateData['org_name'] ?>" required="required">
                                    <input type="hidden" name="org_idd" class="form-control" value="<?php echo $updateData['org_id'] ?>">
                                 </div>
@@ -72,7 +72,7 @@
 
                               <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="inputPassword4">Organization Type</label>
+                                  <label for="inputPassword4"> Type</label>
                                     <select name="org_type" class="form-control" required="required">
                                         <option value="">--select--</option>
                                           <option value="Goverment" <?php if($updateData['org_type']=='Goverment'){ echo 'selected'; }  ?> > Goverment</option> 
@@ -109,7 +109,61 @@
                                   <input type="text" name="postCode" class="form-control" id="inputPassword4" autocomplete="off" required value="<?php echo $updateData['postcode'];?>">
                                 </div>
                               </div>
-                              
+                              <div class="form-row">
+                                <div class="form-group col-md-12">
+                                  <label for="exampleInputEmail1">Description</label>
+                                  <!--  <input type="text" name="desc" class="form-control"  placeholder="description" value="<?php //echo $updateData['prj_desc']; ?>" required="required"> -->
+                                   <textarea name="editor1" class="form-control" rows="5" value="" required="required"><?php echo $updateData['org_desc']; ?></textarea>
+                                </div>
+                              </div>   
+                               
+                              <div class="form-row">
+                                 <div class="form-group col-md-12">
+                                    
+                                     <label>Upload Image</label>
+
+                                        <input type="file" multiple="multiple" name="image_name[]" id="my_image_name"  class="form-control" />
+                                 </div>
+                              </div>   
+                              <div class="row"> 
+                                        <div class="form-group col-md-12">
+                                              <?php 
+                                                    foreach ($imagedata as $key => $row) 
+                                                    {
+                                                      $i = explode('.', $row['orgp_file']);
+                                                      // print_r($i);
+                                                      if($i[1]=='pdf')
+                                                      {
+                                                  ?>
+                                              <div class="col-md-3">
+                                                <a href="<?= base_url('/uploads/'.$row['orgp_file']);?>"  target="_blank">
+                                                      <img  src="<?= base_url('/uploads/icon/pdf-icon.jpg');?>" style="height: 200px;width: 100%;" id="imgIdd">
+                                                      <p class="image-text"><?php echo $row['img_title'];?></p>
+                                                </a>  
+                                                      <a href="<?php echo base_url('Cms_ci/singleImgaeDalet/'.$row['img_id']);?>" class="btn btn-sm btn-danger deleteImg">trash</a></p>
+                                              </div>
+                                              <?php 
+                                                    }
+                                                    else
+                                                    {
+                                                ?>
+                                                <div class="col-md-3">
+                                                      <a href="<?php echo base_url('./uploads/'.$row['orgp_file']);?>" target="_blank">
+                                                        <img  src="<?php echo base_url('./uploads/'.$row['orgp_file']);?>" style="height: 200px;width: 100%;" id="imgIdd">
+                                                        <p class="image-text"><?php echo $row['img_title'];?></p>
+                                                      </a>
+                                                      <a href="<?php echo base_url('Cms_ci/singleImgaeDalet/'.$row['img_id']);?>" class="btn btn-sm btn-danger deleteImg">trash</a></p>
+                                              </div>
+                                                <?php
+                                                    }    
+                                                    }
+                                                  ?> 
+                                            </div>
+
+                                            <div class="row">
+                                              <span id="preview-area">
+                                            </div>
+                                      </div>
 
                                   <div class="form-group col-md-6">
                                        
