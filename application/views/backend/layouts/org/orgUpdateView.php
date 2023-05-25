@@ -68,6 +68,14 @@
                                   <label for="inputPassword4">Contact</label>
                                   <input type="text" name="contact" class="form-control" value="<?php echo $updateData['org_contact'] ?>" required >
                                 </div>
+                                <div class="form-group col-md-6">
+                                   <label for="exampleInputPassword1">Start Date</label>
+                                   <input type="text" name="startdate" class="form-control datepicker strtDate" value="<?php echo date('m/d/Y',strtotime($updateData['startdate'])); ?>" required  onchange="strtDate(this)">
+                                 </div>
+                                <div class="form-group col-md-6">
+                                   <label for="exampleInputPassword1">End Date</label>
+                                   <input type="text" name="expirydate" class="form-control endDate" value="<?php echo date('m/d/Y',strtotime($updateData['expirydate'])); ?>" required>
+                                </div>
                               </div>
 
                               <div class="form-row">

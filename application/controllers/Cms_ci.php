@@ -75,6 +75,9 @@ class Cms_ci extends CI_Controller
           $org_contry = $this->input->post('country');
           $org_postCode = $this->input->post('postCode');
           $editor1        = $this->input->post('editor1');
+          $start_date = $this->input->post('startdate');
+          $expirydate = $this->input->post('expirydate');
+
           $tableName="organization";
           $tblAddress="org_addresses";
           $city =  ucfirst($org_city);
@@ -111,6 +114,8 @@ class Cms_ci extends CI_Controller
               'org_logo'      =>$image ,
               'org_desc'      =>$editor1,
               'org_created_by' =>$this->session->userdata('user')['user_id'], 
+              'startdate'      => date('Y-m-d',strtotime($start_date)),
+              'expirydate'     => date('Y-m-d',strtotime($expirydate))
               );
 
             $org_idd = $this->cms_m->addOrgDataM($orgData,$tableName);
@@ -222,6 +227,9 @@ class Cms_ci extends CI_Controller
               $org_contry = $this->input->post('contry');
               $org_postCode = $this->input->post('postCode');
               $editor1 = $this->input->post('editor1');
+              $start_date = $this->input->post('startdate');
+              $expirydate = $this->input->post('expirydate');
+                
               $uploadImgData = [];
             $city =  ucfirst($org_city);
             $u_id = ['org_id'=>$org_idd];
@@ -260,6 +268,8 @@ class Cms_ci extends CI_Controller
                                   'org_address'   =>$org_address ,
                                   'org_type'      =>$org_type,
                                   'org_desc'      =>$editor1,
+                                  'startdate'      => date('Y-m-d',strtotime($start_date)),
+                                  'expirydate'     => date('Y-m-d',strtotime($expirydate))
                              );
                      $orgAddressData = array(
                                          'address1'   =>$org_address ,

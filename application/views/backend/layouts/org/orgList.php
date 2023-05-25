@@ -21,7 +21,7 @@
     <!-- Main content -->
     <section class="content">
      
-      <a href="<?php echo base_url('cms_ci/orgAddview');?>" class="btn btn-sm btn-success">Add New Organization</a>
+      <a href="<?php echo base_url('cms_ci/orgAddview');?>" class="btn btn-sm btn-success">Add New</a>
       <div class="row">
          <div class="col-sm-12">
                <?php $this->load->view('backend/layouts/flashMsg/flashMsg'); ?>
@@ -88,11 +88,12 @@
                             <input type="checkbox" name="" class="delAll">
                           </th>
                           <th scope="col">#</th>
-                          <th scope="col">Organization Name</th>
+                          <th scope="col"> Name</th>
                           <th scope="col">Email</th>
                           <th scope="col">Fax</th>
                           <th scope="col">Contact</th>
-                          <th scope="col">Address</th>
+                          <th scope="col">Start</th>
+                          <th scope="col">Expire</th>
                           <th scope="col">Org Type</th>
                           <th scope="col"><p>Action</p></th>
                         </tr>
@@ -110,6 +111,8 @@
                            <td><?php echo $row['org_email'];?></td>
                            <td><?php echo $row['org_fax'];?></td>
                            <td><?php echo $row['org_contact'];?></td>
+                           <td><?php echo date('d/m/Y',strtotime($row['startdate']));?></td>
+                           <td><?php echo date('d/m/Y',strtotime($row['expirydate']));?></td>
                            <td><?php echo $row['org_address'];?></td>
                            <td><?php if($row['org_type']=='semi_goverment'){ echo 'Semi Government';}else{ echo $row['org_type'];} ?></td>
                            <td scope="col"><a onclick="return confirm('Are You Sure Want To Delete?');"  href="<?php echo base_url('cms_ci/deleteOrg/'.$row['org_id']);?>" class="btn btn-sm btn-danger "><i class="fa fa-trash"></i></a> 

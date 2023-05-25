@@ -44,7 +44,7 @@
                        <div class="box-body">
                               <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="exampleInputEmail1">Project Title</label>
+                                  <label for="exampleInputEmail1"> Title</label>
                                    <input type="text" name="title" class="form-control" required="required"  value="<?php echo $updateData['prj_name']; ?>">
                                    <input type="hidden" name="u_id" value="<?php echo $updateData['prj_id']; ?>">
                                 </div>
