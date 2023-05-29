@@ -15,7 +15,7 @@
 		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 			<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Apply for <?php echo $jobsDetail['prj_name'];?></h5>
+				<h5 class="modal-title" id="exampleModalLongTitle">Apply for <?php echo $jobsDetail['org_name'];?></h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 				</button>
@@ -24,9 +24,9 @@
 				<!-- Online Form -->
 				<!-- <tbody id="a"> -->
 				<form action="<?php echo base_url('Pages/insertUpdateApplicants'); ?>" method="post" >
-					<input type="hidden" class="tstDate" value="<?php if(!empty($jobsDetail['prj_end_date'])){ echo date('m/d/Y',strtotime($jobsDetail['prj_end_date'])); } ?>" name="test_date" onclick="edDate()">
-					<input type="hidden" value="<?php if(!empty($jobsDetail['prj_end_date'])){ echo date('m/d/Y',strtotime($jobsDetail['prj_end_date'])); } ?>" class="eDate">
-					<input type="hidden" value="<?php if(!empty($jobsDetail['prj_start_date'])){ echo date('m/d/Y',strtotime($jobsDetail['prj_start_date'])); } ?>" class="sDate">
+					<input type="hidden" class="tstDate" value="<?php if(!empty($jobsDetail['expirydate'])){ echo date('m/d/Y',strtotime($jobsDetail['expirydate'])); } ?>" name="test_date" onclick="edDate()">
+					<input type="hidden" value="<?php if(!empty($jobsDetail['expirydate'])){ echo date('m/d/Y',strtotime($jobsDetail['expirydate'])); } ?>" class="eDate">
+					<input type="hidden" value="<?php if(!empty($jobsDetail['startdate'])){ echo date('m/d/Y',strtotime($jobsDetail['startdate'])); } ?>" class="sDate">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -131,22 +131,22 @@
 						<div class="col-lg-8">
 							<div class="job-info-box">
 								<h3 class="m-t0 m-b10 font-weight-700 title-head">
-									<a href="javascript:void(0);" class="text-secondry m-r30"><?php echo $jobsDetail['prj_name'];?></a>
+									<a href="javascript:void(0);" class="text-secondry m-r30"><?php echo $jobsDetail['org_name'];?></a>
 								</h3>
 								<ul class="job-info">
-									<li><strong>Organization :  </strong><?php echo $jobsDetail['org_name'];?></li>
-									<li><strong>Deadline :  </strong><?php echo date('d M Y',strtotime( $jobsDetail['prj_end_date']));?></li>
+									<!-- <li><strong>Organization :  </strong><php echo $jobsDetail['org_name'];?></li> -->
+									<li><strong>Deadline :  </strong><?php echo date('d M Y',strtotime( $jobsDetail['expirydate']));?></li>
 									<li><i class="ti-location-pin text-black m-r5"></i><?php echo $jobsDetail['org_address'];?></li>
 								</ul>
 								<br><br>
 								<h5 class="font-weight-600">Job Description</h5>
 								<div class="dez-divider divider-2px bg-gray-dark mb-4 mt-0"></div>
-								<p><?php echo $jobsDetail['prj_desc'];?></p>
+								<p><?php echo $jobsDetail['org_desc'];?></p>
 								<?php
 									foreach($jobFiles as $files)
 									{
 								?>
-								<a href="<?= base_url('uploads/'.$files->prj_file); ?>" target="_blank" class="site-button"><?= $files->img_title; ?></a>
+								<a href="<?= base_url('uploads/'.$files->orgp_file); ?>" target="_blank" class="site-button"><?= $files->img_title; ?></a>
 								<?php		
 									}
 								?>

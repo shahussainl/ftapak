@@ -76,25 +76,28 @@ $result['recentNews']=$this->Pages_m->getRecentNews();
          $this->load->view('frontend/list',$result);
          $this->load->view('frontend/include/footer');
        }
-       public function check_rollno_slip()
+       public function check_rollno_slip($id = null)
        {
+          $data['prjid']  = $id;
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');
-          $this->load->view('frontend/check_rollno_slip');
+          $this->load->view('frontend/check_rollno_slip',$data);
           $this->load->view('frontend/include/footer');
        }
-       public function check_eligibility()
+       public function check_eligibility($id = null)
        {
+          $data['prjid']  = $id;
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');
-          $this->load->view('frontend/check_eligibility');
+          $this->load->view('frontend/check_eligibility',$data);
           $this->load->view('frontend/include/footer');
        }
-       public function check_result()
+       public function check_result($id = null)
        {
+          $data['prjid']  = $id;
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');
-          $this->load->view('frontend/test_result');
+          $this->load->view('frontend/test_result',$data);
           $this->load->view('frontend/include/footer');
        }
 
@@ -105,8 +108,9 @@ $result['recentNews']=$this->Pages_m->getRecentNews();
          // echo "<pre>";
          // print_r($_POST);
          // exit(); 
-          $cnic = $this->input->post('result_cnic');
-          $result['data'] = $this->Job_m->findCnicResult($cnic);
+          $cnic  = $this->input->post('result_cnic');
+          $prjid = $this->input->post('prjid');
+          $result['data'] = $this->Job_m->findCnicResult($cnic,$prjid);
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');
           $this->load->view('frontend/show_cnic_result_card',$result);
@@ -118,8 +122,9 @@ $result['recentNews']=$this->Pages_m->getRecentNews();
            // echo "<pre>";
            // print_r($_POST);
            // exit();
-          $cnic = $this->input->post('cnic_rollno_slip');
-          $result['data'] = $this->Job_m->findCnicRollno($cnic);
+           $cnic  = $this->input->post('cnic_rollno_slip');
+           $prjid = $this->input->post('prjid');
+          $result['data'] = $this->Job_m->findCnicRollno($cnic,$prjid);
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');
           $this->load->view('frontend/show_cnic_rollno_slip',$result);
@@ -129,7 +134,8 @@ $result['recentNews']=$this->Pages_m->getRecentNews();
       public function show_cnic_eligibility()
       {
           $cnic = $this->input->post('cnic_slip');
-          $result['data'] = $this->Job_m->findCnicEligible($cnic);
+          $prjid = $this->input->post('prjid');
+          $result['data'] = $this->Job_m->findCnicEligible($cnic,$prjid);
           $this->load->view('frontend/include/head');
           $this->load->view('frontend/include/header');
           $this->load->view('frontend/show_cnic_eligibility_slip',$result);

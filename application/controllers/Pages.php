@@ -186,7 +186,7 @@ $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
        }
        public function job_Detail($id)
        {
-          $idd=['pro.prj_id'=>$id];    
+          $idd=['org_id'=>$id];    
           $result['jobsDetail']=$this->Job_m->getJobDetail($idd);
           $result['jobFiles']   =$this->Job_m->getJobDetailFiles($id);
             

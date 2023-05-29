@@ -11,6 +11,7 @@
 						<form method="post" action="<?= base_url('Job/show_cnic_rollno_slip'); ?>">
 							<div class="input-group">
 								<input type="text" name="cnic_rollno_slip" class="form-control" placeholder="i.e 11xxx-xxxxxxx-x" data-inputmask="&quot;mask&quot;: &quot;99999-9999999-9&quot;" data-mask="" >
+								<input type="hidden" name="prjid" value="<?= $prjid; ?>">
 								<div class="input-group-prepend">
 									<button type="submit" class="site-button">Search</button>
 								</div>

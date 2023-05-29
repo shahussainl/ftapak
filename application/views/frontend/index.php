@@ -38,14 +38,14 @@
 											<span><img alt="" src="<?php echo base_url('uploads/'.$row['org_logo']);?>"/></span>
 										</div>
 										<div class="job-post-info">
-											<h4><a href="<?php echo base_url('Pages/job_Detail/'.$row['prj_id']);?>">
-												<?php echo $row['prj_name'];?></a></h4>
+											<h4><a href="<?php echo base_url('Pages/job_Detail/'.$row['org_id']);?>">
+												<?php echo $row['org_name'];?></a></h4>
 											<ul>
-												<li><i class="fa fa-map-marker"></i><?php echo $row['city'];?></li>
+												<li><i class="fa fa-map-marker"></i><?php echo $row['org_address'];?></li>
 												<!-- <li><i class="fa fa-bookmark-o"></i> Full Time</li> -->
-												<li><i class="fa fa-clock-o"></i><?php echo date('d M y',strtotime($row['prj_start_date'])).' - '.date('d M y',strtotime($row['prj_end_date'])); ?></li>
+												<li><i class="fa fa-clock-o"></i><?php echo date('d M y',strtotime($row['startdate'])).' - '.date('d M y',strtotime($row['expirydate'])); ?></li>
 											</ul>
-											<p><?= $row['prj_desc']; ?></p>
+											<p><?= $row['org_desc']; ?></p>
 										</div>
 									</div>
 									 <div class="d-flex">
@@ -55,10 +55,10 @@
 										{
 											foreach($jobFiles as $files)
 											{
-												if($row['prj_id']  == $files->project_id)
+												if($row['org_id']  == $files->orgp_id)
 												{
 										?>
-										<a href="<?= base_url('uploads/'.$files->prj_file); ?>"><span><?= $files->img_title;?></span></a>
+										<a href="<?= base_url('uploads/'.$files->orgp_file); ?>"><span><?= $files->img_title;?></span></a>
 										<!-- <a href="<= base_url('uploads/'.$files->prj_file); ?>" target="_blank" class="site-button"><= $files->img_title;?></a> -->
 										<?php		
 												}
@@ -81,14 +81,10 @@
                              }
                             }
                          ?>
-
 						</ul>
 						<div class="m-t30">
 							<div class="d-flex">
-								
-								
-<?= $this->pagination->create_links(); ?>
-								
+						<?= $this->pagination->create_links(); ?>
 							</div>
 						</div>
 					</div>
@@ -107,7 +103,7 @@
 												foreach($recentNews as $news)
 												{
 										?>
-													<a href="<?= base_url('Pages/newsFeedDetail/'.$news['n_u_id']);?>"><?= $news['n_u_title']; ?></a>
+													<a href="<?= base_url('Pages/newsFeedDetail/'.$news['n_u_id']);?>"><?= $news['n_u_title']; ?></a><br>
 										<?php
 												}
 											}

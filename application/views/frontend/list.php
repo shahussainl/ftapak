@@ -39,7 +39,7 @@
 								<td><?= $rec->prj_name;       ?></td>
 								<td><?= date('d F Y',strtotime($rec->prj_start_date)); ?></td>
 								<td><?= date('d F Y',strtotime($rec->prj_end_date));   ?></td>
-								<td><a href="<?= base_url('Job/'.$pagedirect); ?>">check</a></td>
+								<td><a href="<?= base_url('Job/'.$pagedirect.'/'.$rec->prj_id); ?>">check</a></td>
 							</tr>
 							<?php
 								$sn++;

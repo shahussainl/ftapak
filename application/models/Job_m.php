@@ -7,12 +7,19 @@
   	
   	public function getAllJobs()
   	{
-       $this->db->select('*');
-       $this->db->from('projects as pro');
-       $this->db->join('organization as org','org.org_id=pro.org_id');
+      //  $this->db->select('*');
+      //  $this->db->from('projects as pro');
+      //  $this->db->join('organization as org','org.org_id=pro.org_id');
+      //  $this->db->join('org_addresses as add','org.org_id=add.org_id');
+      //  $this->db->limit(20);
+      //  $this->db->order_by('pro.prj_id','DESC');
+      //  $query = $this->db->get();
+      $this->db->select('*');
+       $this->db->from('organization as org');
+      //  $this->db->join('organization as org','org.org_id=pro.org_id');
        $this->db->join('org_addresses as add','org.org_id=add.org_id');
        $this->db->limit(20);
-       $this->db->order_by('pro.prj_id','DESC');
+       $this->db->order_by('org.org_id','DESC');
        $query = $this->db->get();
        return $query->result_array();
   	}
@@ -43,9 +50,14 @@
   	}
   	public function getJobDetail($id)
   	{
-       return $this->db->select('*')
-                       ->from('projects as pro')
-                       ->join('organization as org','org.org_id=pro.org_id')
+      //  return $this->db->select('*')
+      //                  ->from('projects as pro')
+      //                  ->join('organization as org','org.org_id=pro.org_id')
+      //                  ->where($id)
+      //                  ->get()->row_array();
+      return $this->db->select('*')
+                       ->from('organization')
+                      //  ->join('organization as org','org.org_id=pro.org_id')
                        ->where($id)
                        ->get()->row_array();
               // $data = [];
@@ -61,15 +73,26 @@
 
     public function getJobDetailFiles($id)
     {
+      // return $this->db->select('*')
+      //                  ->from('prj_img')
+      //                  ->where('project_id',$id)
+      //                  ->get()->result();
       return $this->db->select('*')
-                       ->from('prj_img')
-                       ->where('project_id',$id)
+                       ->from('orgp_img')
+                       ->where('orgp_id',$id)
                        ->get()->result();
     }
+    // public function getAllJobFiles()
+    // {
+    //   return $this->db->select('*')
+    //                    ->from('prj_img')
+    //                   //  ->where('project_id',$id)
+    //                    ->get()->result();
+    // }
     public function getAllJobFiles()
     {
       return $this->db->select('*')
-                       ->from('prj_img')
+                       ->from('orgp_img')
                       //  ->where('project_id',$id)
                        ->get()->result();
     }
@@ -189,7 +212,7 @@
        return $query->result_array();
     }
 
-    public function findCnicResult($cnic)
+    public function findCnicResult($cnic,$prjid)
     {
       return $this->db->select('*,res.user_id as rs_user_id, app.prj_id as ap_prj_id,prj.prj_id as prj_id, att.prj_id as at_prj_id,att.app_id as at_app_id, rl.app_id as rl_app_id,rl.rollno_id as rl_rollno_id,app.app_id as ap_app_id,rl.prj_id as rl_prj_id,res.app_id as rs_app_id,res.prj_id as rs_prj_id')
                        ->from('rollno as rl')
@@ -201,11 +224,12 @@
                        ->group_by('app.app_id')
                        // ->where('u.user_is_trash',0)
                        // ->where('att.status','P')
+                       ->where('prj.prj_id',$prjid)
                        ->where('u.user_cnic',$cnic)
                        ->get()->result();
     }
 
-    public function findCnicRollno($cnic)
+    public function findCnicRollno($cnic,$prjid)
     {
        return $this->db->select('*')
                        ->from('rollno as rl')
@@ -214,11 +238,12 @@
                        ->join('test_center as tc','tc.center_id=atc.tc_center_id','left')
                        ->join('projects as prj','prj.prj_id=rl.prj_id','left')
                        ->join('users as u','u.user_id=rl.user_id','left')
+                       ->where('prj.prj_id',$prjid)
                        ->where('u.user_is_trash',0)
                        ->where('u.user_cnic',$cnic)
                        ->get()->result();
     }
-    public function findCnicEligible($cnic)
+    public function findCnicEligible($cnic,$prjid)
     {
        return $this->db->select('*')
                        ->from('rollno as rl')
@@ -227,6 +252,7 @@
                        ->join('test_center as tc','tc.center_id=atc.tc_center_id','left')
                        ->join('projects as prj','prj.prj_id=rl.prj_id','left')
                        ->join('users as u','u.user_id=rl.user_id','left')
+                       ->where('prj.prj_id',$prjid)
                        ->where('u.user_is_trash',0)
                        ->where('u.user_cnic',$cnic)
                        ->get()->result();
