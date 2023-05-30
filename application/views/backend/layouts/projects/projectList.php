@@ -91,8 +91,8 @@
                                          <input type="checkbox" name="" class="delAll">
                                        </th>
                                        <th scope="col">#</th>
-                                       <th scope="col">Organization</th>
-                                       <th scope="col">Project Title</th>
+                                       <th scope="col">Projects</th>
+                                       <th scope="col">Posts</th>
                                        <!-- <th scope="col">Short Description</th> -->
                                        <th scope="col">Total Marks</th>
                                        <th scope="col">Start Date</th>
