@@ -8,7 +8,7 @@
     ?>
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="footer-top">
+        <div class="footer-top"  style="display:none;">
             <div class="container">
                 <div class="row">
 					
@@ -16,11 +16,11 @@
                         <div class="widget border-0">
                         <i class="fa fa-map-marker"></i>
                         <?php 
-                                     if(!empty($sittingData['company_address']))
-                                      {
-                                          echo $sittingData['company_address']; 
-                                       } 
-                                     ?>
+                            if(!empty($sittingData['company_address']))
+                            {
+                                echo $sittingData['company_address']; 
+                            } 
+                            ?>
                             <!-- <h5 class="m-b30 text-white">Frequently Asked Questions</h5>
                             <ul class="list-2 list-line">
                                 <li><a href="javascript:void(0);">Privacy & Seurty</a></li>
@@ -37,7 +37,7 @@
 					<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
                         <div class="widget border-0">
                         <i class="fa fa-envelope"></i>
-                        <a href="mailto:support@company.com">
+                        <a href="mailto:<?= $sittingData['company_email']; ?>">
                         <?php 
                                      if(!empty($sittingData['company_email']))
                                       {
@@ -52,44 +52,13 @@
                     </div>
                     <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12">
                         <div class="widget">
-                            <img src="images/logo-white.png" width="180" class="m-b15" alt=""/>
+                            <img src="<?php if(!empty($sittingData['company_logo'])){ echo base_url('/uploads/'.$sittingData['company_logo']); } ?>" width="180" class="m-b15" alt=""/>
 			
 							<ul class="list-inline m-a0">
-								<li><a href="
-                                    <?php
-                                   if(!empty($sittingData['fb_link']))
-                                   {
-                                       echo $sittingData['fb_link'];
-                                   } 
-                                   ?>" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
-                                    
-
-								<li><a href="
-                                    <?php 
-                                     if(!empty($sittingData['linkedin_link']))
-                                      {
-                                          echo $sittingData['linkedin_link']; 
-                                       } 
-                                     ?>
-                                       " class="site-button white linkedin circle"><i class="fa fa-linkedin"></i></a></li>
-
-								<li><a href="
-                                    <?php 
-                                     if(!empty($sittingData['instagram_link']))
-                                      {   
-                                        echo $sittingData['instagram_link']; 
-                                      }
-                                     ?>
-                                     " class="site-button white instagram circle "><i class="fa fa-instagram"></i></a></li>
-
-								<li><a href="
-                                    <?php 
-                                     if(!empty($sittingData['instagram_link']))
-                                      {   
-                                        echo $sittingData['twitter_link']; 
-                                      }
-                                     ?>
-                                     " class="site-button white instagram circle"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="<?php if(!empty($sittingData['fb_link'])) {echo $sittingData['fb_link']; }?>" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
+								<li><a href="<?php if(!empty($sittingData['linkedin_link'])){echo $sittingData['linkedin_link']; } ?>" class="site-button white linkedin circle"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="<?php if(!empty($sittingData['instagram_link'])) {  echo $sittingData['instagram_link'];    }?>" class="site-button white instagram circle "><i class="fa fa-instagram"></i></a></li>
+								<li><a href=" <?php if(!empty($sittingData['instagram_link'])){ echo $sittingData['twitter_link']; }?>" class="site-button white instagram circle"><i class="fa fa-twitter"></i></a></li>
 							</ul>
                         </div>
                     </div>
@@ -100,10 +69,19 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-4 text-center">
+                        <?php if(!empty($sittingData['company_address'])) {echo str_replace('<br>',' ',$sittingData['company_address']); } ?>
+                    </div>
+                    <div class="col-lg-4 text-center">
 						<span> © Copyright by 
 						<a href="<?= base_url(); ?>"><b><?php if(!empty($sittingData['company_name'])){ echo $sittingData['company_name']; } ?></b> </a> All rights reserved.</span> 
 					</div>
+                    <div class="col-lg-4 text-center">
+                        <a href="<?php if(!empty($sittingData['fb_link'])) {echo $sittingData['fb_link']; }?>" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a>
+                        <a href="<?php if(!empty($sittingData['linkedin_link'])){echo $sittingData['linkedin_link']; } ?>" class="site-button white linkedin circle"><i class="fa fa-linkedin"></i></a>
+                        <a href="<?php if(!empty($sittingData['instagram_link'])) {  echo $sittingData['instagram_link'];    }?>" class="site-button white instagram circle "><i class="fa fa-instagram"></i></a>
+                        <a href=" <?php if(!empty($sittingData['instagram_link'])){ echo $sittingData['twitter_link']; }?>" class="site-button white instagram circle"><i class="fa fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
