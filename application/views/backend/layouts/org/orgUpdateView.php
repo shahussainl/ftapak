@@ -169,7 +169,7 @@
                                             </div>
 
                                             <div class="row">
-                                              <span id="preview-area">
+                                              <span id="preview-area"></span>
                                             </div>
                                       </div>
 
@@ -241,8 +241,6 @@
       for (var i = 0; i < fileList.length; i++) {
           //get a blob to play with
           var objectUrl = anyWindow.createObjectURL(fileList[i]);
-          // for the next line to work, you need something class="preview-area" in your html
-            // $('#preview-area').empty();
           $('#preview-area').append('<div class="col-md-3"><img class="card-img-top" src="' + objectUrl + '" style="height:200px;  width:100%;" /><br><input type="text" name="img_title[]" placeholder="    enter Title" style="height:30px;  width:100%;"></div>');
           // get rid of the blob
           window.URL.revokeObjectURL(fileList[i]);

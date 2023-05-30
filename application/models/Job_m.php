@@ -224,6 +224,7 @@
                        ->group_by('app.app_id')
                        // ->where('u.user_is_trash',0)
                        // ->where('att.status','P')
+                       ->where('app.remarks','Eligible')
                        ->where('prj.prj_id',$prjid)
                        ->where('u.user_cnic',$cnic)
                        ->get()->result();
@@ -238,6 +239,7 @@
                        ->join('test_center as tc','tc.center_id=atc.tc_center_id','left')
                        ->join('projects as prj','prj.prj_id=rl.prj_id','left')
                        ->join('users as u','u.user_id=rl.user_id','left')
+                       ->where('app.remarks','Eligible')
                        ->where('prj.prj_id',$prjid)
                        ->where('u.user_is_trash',0)
                        ->where('u.user_cnic',$cnic)
@@ -342,10 +344,10 @@
     public function fetch_blogs($limit, $start) {
         $this->db->limit($limit, $start);
        
-        $query = $this->db->select('*')->from('projects as pro')
-                         ->join('organization as org','org.org_id=pro.org_id')
-                         ->join('org_addresses as add','org.org_id=add.org_id')
-                         ->order_by('pro.prj_id','DESC')
+        $query = $this->db->select('*')->from('organization as pro')
+                        //  ->join('organization as org','org.org_id=pro.org_id')
+                        //  ->join('org_addresses as add','org.org_id=add.org_id')
+                         ->order_by('org_id','DESC')
                          ->get();
 
         if ($query->num_rows() > 0) {

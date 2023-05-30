@@ -24,7 +24,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Add New Project</h3>
+              <h3 class="box-title">Add New</h3>
 
              <!--  <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -139,11 +139,11 @@
                                   <div class="form-group col-md-12" id="upload-form">
                                         <label>Upload Image</label>
 
-                                        <input type="file" name="image_name[]" onchange="myFunction(this);previewImages(this)" id="my_image_name"  class="form-control file-input"   multiple="multiple"/>
+                                        <input type="file" name="image_name[]" onchange="previewImages(this)" id="my_image_name"  class="form-control file-input"   multiple="multiple"/>
                                   </div> 
                               </div>
                               <div class="row">
-                                         <span id="preview-area">
+                                         <span id="preview-area"></span>
                                    </div>   
                
                               </div>
@@ -154,16 +154,12 @@
                                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                   </div>
                                 </div>
-                       </form>
-
-
+                    
                  </div> 
-                 
-
               </div>
               <!-- /.row -->
             </div>
-          
+            </form>
           </div>
           <!-- /.box -->
         </div>
@@ -191,11 +187,7 @@
       for (var i = 0; i < fileList.length; i++) {
           //get a blob to play with
           var objectUrl = anyWindow.createObjectURL(fileList[i]);
-          // for the next line to work, you need something class="preview-area" in your html
-            // $('#preview-area').empty();
-          
-
-          $('#preview-area').append('<div class="col-md-3"><img class="card-img-top" src="' + objectUrl + '" style="height:200px;  width:100%;" /><br><input type="text" name="img_title[]" placeholder="    enter Title" style="height:30px;  width:100%;"></div>');
+          $('#preview-area').append('<div class="col-md-3"><img class="card-img-top" src="' + objectUrl + '" style="height:200px;  width:100%;" /><br><input type="text" name="img_title[]" placeholder="enter Title" class="form-control" style="height:30px;  width:100%;"></div>');
           // get rid of the blob
           window.URL.revokeObjectURL(fileList[i]);
       }
@@ -206,6 +198,6 @@
        // alert('fun');
       $(obj).hide();
       $(obj).removeAttr('id');
-      $("#upload-form").append("<input class='form-control file-input' type='file' onchange='myFunction(this);previewImages(this);' name='image_name[]' id='my_image_name' multiple='multiple' />");
+      $("#upload-form").append("<input class='form-control file-input' type='file' onchange='myFunction(this);previewImages(this);' name='image_name[]' id='my_image_name' multiple='multiple' /><br><input type='text' name='img_title[]' placeholder='enter Title' style='eight:30px;  width:100%;'>");
     }
 </script>
