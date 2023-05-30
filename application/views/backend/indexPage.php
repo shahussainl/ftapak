@@ -1,5 +1,5 @@
 <?php
- $prj        = $this->db->count_all_results('projects');
+ $prj        = $this->db->count_all_results('organization');
  $applcnts   = $this->db->count_all_results('applicants');
  $tstcentr   = $this->db->count_all_results('test_center');
  $prjDone    = $this->db->select('*')->from('result as res')->join('projects as pro','res.prj_id=pro.prj_id')->count_all_results();

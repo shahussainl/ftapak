@@ -7,8 +7,11 @@
              // exit();
     ?>
     <!-- Footer -->
+
+    <!-- <footer class="footer-distributed"> -->
+        
     <footer class="site-footer">
-        <div class="footer-top"  style="display:none;">
+        <div class="footer-distributed"  style="display:none;">
             <div class="container">
                 <div class="row">
 					

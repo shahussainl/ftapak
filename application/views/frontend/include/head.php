@@ -16,6 +16,8 @@
 	<meta property="og:description" content="JobBoard - HTML Template" />
 	<meta property="og:image" content="JobBoard - HTML Template" />
 	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="front_asset/css/header.css" />
 	
 	<link rel="icon" href="images/favicon.ico" type="<?php if(!empty($adminData->company_logo)){ echo base_url('/uploads/'.$adminData->company_logo); } ?>" />
 	<link rel="shortcut icon" type="image/x-icon" href="<?php if(!empty($adminData->company_logo)){ echo base_url('/uploads/'.$adminData->company_logo); } ?>" />

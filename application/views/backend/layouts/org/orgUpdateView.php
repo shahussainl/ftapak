@@ -128,7 +128,7 @@
                               <div class="form-row">
                                  <div class="form-group col-md-12">
                                     
-                                     <label>Upload Image</label>
+                                     <label>Upload Advertisenment and Application with Title</label>
 
                                         <input type="file" multiple="multiple" name="image_name[]" id="my_image_name"  class="form-control" />
                                  </div>
