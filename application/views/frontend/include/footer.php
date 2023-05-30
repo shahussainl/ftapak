@@ -11,22 +11,49 @@
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-					<div class="col-xl-5 col-lg-4 col-md-12 col-sm-12">
+					
+					<div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 col-12">
+                        <div class="widget border-0">
+                        <i class="fa fa-map-marker"></i>
+                        <?php 
+                                     if(!empty($sittingData['company_address']))
+                                      {
+                                          echo $sittingData['company_address']; 
+                                       } 
+                                     ?>
+                            <!-- <h5 class="m-b30 text-white">Frequently Asked Questions</h5>
+                            <ul class="list-2 list-line">
+                                <li><a href="javascript:void(0);">Privacy & Seurty</a></li>
+                                <li><a href="javascript:void(0);">Terms of Serice</a></li>
+							                	<li><a href="javascript:void(0);">Support</a></li>
+                                <li><a href="javascript:void(0);">How It Works</a></li>
+                                <li><a href="javascript:void(0);">Underwriting</a></li>
+                                <li><a href="javascript:void(0);">Contact Us</a></li>
+								                <li><a href="javascript:void(0);">Lending Licnses</a></li>
+								                <li><a href="javascript:void(0);">Support</a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+					<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
+                        <div class="widget border-0">
+                        <i class="fa fa-envelope"></i>
+                        <a href="mailto:support@company.com">
+                        <?php 
+                                     if(!empty($sittingData['company_email']))
+                                      {
+                                          echo $sittingData['company_email']; 
+                                       } 
+                                     ?>
+                       
+                        </a>
+                     
+                    
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12">
                         <div class="widget">
                             <img src="images/logo-white.png" width="180" class="m-b15" alt=""/>
-							<p class="text-capitalize m-b20">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the.</p>
-                            <div class="subscribe-form m-b20">
-								<form class="myformSub" method="post">
-								    <label class="show_data"></label>
-									<div class="input-group">
-
-										<input type="email"  name="email" required="required"  class="form-control" placeholder="Your Email Address" >
-										<span class="input-group-btn">
-											<button type="submit" class="site-button radius-xl">Subscribe</button>   
-										</span> 
-									</div>
-								</form>
-							</div>
+			
 							<ul class="list-inline m-a0">
 								<li><a href="
                                     <?php
@@ -36,10 +63,7 @@
                                    } 
                                    ?>" class="site-button white facebook circle "><i class="fa fa-facebook"></i></a></li>
                                     
-								<li><a href="<?php 
-                                if(!empty($sittingData['google_link'])){ 
-                                    echo $sittingData['google_link']; }
-                                     ?>" class="site-button white google-plus circle"><i class="fa fa-google-plus"></i></a></li>
+
 								<li><a href="
                                     <?php 
                                      if(!empty($sittingData['linkedin_link']))
@@ -67,34 +91,6 @@
                                      ?>
                                      " class="site-button white instagram circle"><i class="fa fa-twitter"></i></a></li>
 							</ul>
-                        </div>
-                    </div>
-					<div class="col-xl-5 col-lg-5 col-md-8 col-sm-8 col-12">
-                        <div class="widget border-0">
-                            <h5 class="m-b30 text-white">Frequently Asked Questions</h5>
-                            <ul class="list-2 list-line">
-                                <li><a href="javascript:void(0);">Privacy & Seurty</a></li>
-                                <li><a href="javascript:void(0);">Terms of Serice</a></li>
-							                	<li><a href="javascript:void(0);">Support</a></li>
-                                <li><a href="javascript:void(0);">How It Works</a></li>
-                                <li><a href="javascript:void(0);">Underwriting</a></li>
-                                <li><a href="javascript:void(0);">Contact Us</a></li>
-								                <li><a href="javascript:void(0);">Lending Licnses</a></li>
-								                <li><a href="javascript:void(0);">Support</a></li>
-                            </ul>
-                        </div>
-                    </div>
-					<div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
-                        <div class="widget border-0">
-                            <h5 class="m-b30 text-white">Find Jobs</h5>
-                            <ul class="list-2 w10 list-line">
-                                <li><a href="<?php echo base_url('Pages/all_jobs');?>">All Jobs</a></li>
-                                <li><a href="<?php  echo base_url('Pages/company_jobs');?>">Jobs by Company</a></li>
-                                <li><a href="<?php echo base_url('Pages/getAllCategory'); ?>">Jobs by Category</a></li>
-                                <li><a href="<?php echo base_url('Pages/viewFunction'.'/alllocation'); ?>">Jobs by Location</a></li>
-                                <li><a href="<?php  echo base_url('Pages/designation_jobs');?>">Jobs Designation</a></li>
-								
-                            </ul>
                         </div>
                     </div>
 				</div>
