@@ -139,29 +139,17 @@ if($data!='')
         <h3 class="text-danger">Important <i class="fa fa-info"></i></h3>
         <ul>
           <li>
-            <p class="text-danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </li>
-            <li>
-            <p class="text-danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </li>
-            <li>
-            <p class="text-danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </li>
+            <p>You must bring Roll Number Slip and Orginal Computerized National Identity Card (CNIC). Candidates who doesn't possess Orginal CNIC, they are directed to bring Armed license or driving license or service card (if Govt. Servant) with latest photograph to identify themselves. Otherwise, they will not be allowed to test Center</p>
+          </li>
+          
+          <li>
+            <p>No Ta/Da will be admissible on test day.</p>
+          </li>
+            
+          <li>
+            <p class="text-danger">Mobile Phone, Calculators or any Gadget is not allowed in the Test Center Premises as per HEC instructions and NTS rules. Please don't bring any of the above with you. Candidate may be searched for mobile phone / electronic device and if found it will be confiscated and paper will be cancelled.</p>
+          </li>
+           
         </ul>
       
       </div>
