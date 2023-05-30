@@ -137,7 +137,7 @@
                               </div> 
                               <div class="form-row">
                                   <div class="form-group col-md-12" id="upload-form">
-                                        <label>Upload Image</label>
+                                        <label>Upload Advertisenment and Application with Title</label>
 
                                         <input type="file" name="image_name[]" onchange="previewImages(this)" id="my_image_name"  class="form-control file-input"   multiple="multiple"/>
                                   </div> 
